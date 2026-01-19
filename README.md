@@ -1,7 +1,6 @@
-# re-2026-etienne-thomas-d
+# PEGS method implementation 2026
+## Projet
+Application de suivi des performances sprotives.
 
-
-
-# Athors
-Etienne CARPENTIER
-Thomas DOUMENG
+## Athors
+Etienne CARPENTIER et Thomas DOUMENG
