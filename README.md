@@ -1,6 +1,11 @@
 # PEGS method implementation 2026
-## Projet
-Application de suivi des performances sprotives.
+## Project context
+A mobile application currently under development that aims to allow users to track their performance at the gym.
 
-## Athors
-Etienne CARPENTIER et Thomas DOUMENG
+## How to generate document
+The requirements are stored in a structured CSV file acting as a single source of truth.
+This format allows traceability, automated processing, and systematic generation of human-readable documentation (AsciiDoc/PDF)
+
+## Authors
+Etienne CARPENTIER & Thomas DOUMENG
+

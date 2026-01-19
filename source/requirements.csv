@@ -1,0 +1,5 @@
+id;category;moscow;pegs_type;pegs_ref;title;description;rationale;stakeholder;source;priority;acceptance_criteria;status
+1;Functional;MUST;Goal;G-01;User authentication;The system shall authenticate users using unique credentials;Ensure secure access to the system;End User;Security policy;High;User can log in with valid credentials;Proposed
+2;NonFunctional;SHOULD;ExpectedOutcome;EO-02;Performance response time;The system shall respond in less than 200 ms for standard requests;Improve user experience;System Owner;UX guideline;Medium;Average response time measured under load < 200 ms;Proposed
+3;Constraint;MUST;Stakeholder;S-01;Database technology;The system shall use PostgreSQL as the database engine;Align with company technical standards;IT Department;Architecture decision;High;Database engine verified in deployment;Approved
+4;Functional;COULD;Scenario;SC-03;Export user data;The system could allow users to export their data in CSV format;Provide data portability;End User;GDPR requirement;Low;User can download a CSV export;Proposed
