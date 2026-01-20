@@ -6,8 +6,7 @@ on:
       - main
     paths:
       - 'source/requirements_app_PEGS.xlsx'
-      - 'generate_doc.py'
-      - 'check_data.py'
+      - 'scripts/**'
   workflow_dispatch:
 
 permissions:
@@ -26,13 +25,13 @@ jobs:
           python-version: '3.9'
           
       - name: Install Python dependencies
-        run: pip install pandas openpyxl
+        run: pip install -r scripts/requirements.txt
 
       - name: Run Data Tests
-        run: python check_data.py
+        run: python scripts/check_data.py
 
       - name: Generate AsciiDoc
-        run: python generate_doc.py
+        run: python scripts/generate_doc.py
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
@@ -48,17 +47,15 @@ jobs:
       - name: Verify HTML Output
         run: |
           if [ ! -f index.html ]; then
-            echo "Erreur : Le fichier index.html n'a pas été créé."
+            echo "Erreur : index.html non trouvé."
             exit 1
           fi
-          
           FILE_SIZE=$(stat -c%s "index.html")
           if [ "$FILE_SIZE" -lt 100 ]; then
-             echo "Erreur : Le fichier index.html semble vide ou corrompu (Taille: $FILE_SIZE octets)."
+             echo "Erreur : Fichier vide."
              exit 1
           fi
-          
-          echo "Succès : index.html généré et valide ($FILE_SIZE octets)."
+          echo "Succès : index.html généré ($FILE_SIZE octets)."
 
       - name: Commit and Push changes
         run: |
