@@ -1,8 +1,15 @@
 # Implémentation de la méthode PEGS – LIFT-TRACK (2026)
 
+## Auteurs
+
+- **Étienne CARPENTIER**
+- **Thomas DOUMENG**
+
+---
+
 ## Présentation du projet
 
-Ce dépôt contient les exigences relative a *LIFT-TRACK*, une application **mobile-first** de suivi sportif destinée aux pratiquants de fitness et de musculation en cours de développement.
+Ce dépôt contient les exigences relative a *LIFT-TRACK*, une application **mobile-first** de suivi sportif destinée aux pratiquants de fitness et de musculation. C'est une application en cours de développement.
 
 L’application est pensée pour une utilisation principale sur smartphone, en conditions réelles d’entraînement, avec une extension ultérieure vers des usages desktop, notamment pour des coachs sportifs.
 
@@ -85,7 +92,7 @@ Chaque exigence est :
 
 ---
 
-## 📂 Structure du dépôt
+## Structure du dépôt
 
 - `\index.html`  
 Rapport HTML généré par le script, permettant de consulter le rapport depuis un navigateur.
@@ -103,21 +110,20 @@ Fichier markdown de présentation du projet et de la démarche méthodologique.
     - `requirements_app_PEGS.xlsx`
     Tableau excel contenant l'intégralité des exigences exprimées pour le projet, 
 
-
 ---
 
-## 🛠️ Génération automatique de la documentation
+## Génération automatique de la documentation et consultation
 
 La génération de la documentation est **entièrement automatisée** via **GitHub Actions**.
 
-### 🔄 Génération automatique
+### Génération automatique
 - Toute modification du fichier source **Excel contenant les exigences**
 - suivie d’un **push sur le dépôt**
 - déclenche automatiquement un workflow de génération de documentation.
 
-👉 Cela garantit que les documents générés sont **toujours à jour** et strictement alignés avec la source des exigences.
+Cela garantit que les documents générés sont **toujours à jour** et strictement alignés avec la source des exigences.
 
-### ▶️ Génération manuelle
+### Génération manuelle
 Il est également possible de lancer manuellement la génération de la documentation :
 
 1. Aller dans **Actions**
@@ -126,6 +132,10 @@ Il est également possible de lancer manuellement la génération de la document
 4. Cliquer sur **Run workflow**
 
 Cette option permet de rejouer la génération sans modifier les sources.
+
+### Consulter le rapport d'exigence
+
+
 
 ---
 
@@ -141,13 +151,6 @@ L’identification explicite des parties prenantes permet de justifier les exige
 
 ---
 
-## Auteurs
-
-- **Étienne CARPENTIER**
-- **Thomas DOUMENG**
-
----
-
 ## Contexte académique
 
 Ce dépôt est réalisé dans le cadre d’un **travail académique en ingénierie des exigences**.  
@@ -158,3 +161,18 @@ Il vise à démontrer :
 - une approche réaliste orientée produit et usage réel.
 
 Le projet s’appuie volontairement sur un cas concret afin d’éviter une approche purement théorique.
+
+---
+
+## Utilisation de l'IA
+
+L’intelligence artificielle a été utilisée à deux niveaux dans ce projet :
+
+- **Structuration initiale des exigences** :  
+  L’IA a été sollicitée pour proposer une première organisation des exigences à partir de la documentation existante et des fiches techniques de l’application. Cela a permis de gagner du temps sur la formalisation des besoins de base et d’assurer une couverture cohérente des fonctionnalités principales.
+
+- **Génération du script de documentation** :  
+  L’IA a permis d’accélérer la création du script Python (`generate_doc.py`) qui convertit le fichier source des exigences en rapport HTML. Les suggestions de l’IA ont facilité la structuration du code et l’automatisation du processus de génération.
+
+
+
