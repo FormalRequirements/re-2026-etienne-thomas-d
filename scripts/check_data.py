@@ -36,6 +36,7 @@ def check_excel_structure():
 
     print("TEST RÉUSSI.")
     sys.exit(0)
+    
 
 if __name__ == "__main__":
     check_excel_structure()
