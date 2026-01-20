@@ -16,14 +16,6 @@ def clean_text(text):
     # On garde les sauts de ligne avec le format AsciiDoc " +"
     return str(text).strip().replace("\n", " +\n")
 
-def get_priority_icon(moscow):
-    m = str(moscow).upper().strip()
-    if m == 'MUST': return "🔴 *MUST*"
-    if m == 'SHOULD': return "🟠 *SHOULD*"
-    if m == 'COULD': return "🟢 *COULD*"
-    if m == 'WONT': return "⚪ *WON'T*"
-    return m
-
 def generate_asciidoc():
     print(f"🔍 Recherche du fichier : {EXCEL_PATH}")
     
@@ -33,6 +25,7 @@ def generate_asciidoc():
 
     try:
         df = pd.read_excel(EXCEL_PATH)
+        # Gestion des majuscules pour la catégorie pour éviter les doublons (System vs system)
         if 'Category' in df.columns:
             df['Category'] = df['Category'].str.capitalize()
     except Exception as e:
@@ -80,38 +73,40 @@ Source des données : `{os.path.basename(EXCEL_PATH)}`
 
     for category in categories_to_process:
         items = df[df['Category'] == category]
+        # Tri par ID si la colonne existe
         if 'ID' in items.columns:
             items = items.sort_values(by='ID')
 
         adoc_content += f"\n== {category}\n\n"
         
         for _, row in items.iterrows():
+            # Récupération des données (On utilise .get() pour éviter les erreurs si une colonne manque)
             req_id = clean_text(row.get('ID', 'REQ-???'))
             title = clean_text(row.get('Title', 'Sans titre'))
-            moscow = clean_text(row.get('MoSCoW', ''))
+            pegs_ref = clean_text(row.get('PEGS Ref', '-'))
             desc = clean_text(row.get('Description', ''))
             rationale = clean_text(row.get('Rationale', ''))
             accept_crit = clean_text(row.get('Acceptance Criteria', ''))
-            status = clean_text(row.get('Status', ''))
 
-            priority_display = get_priority_icon(moscow)
+            # --- Construction de l'exigence ---
             
-            # Titre de l'exigence (Niveau 3) -> Apparaît dans la TOC
+            # 1. Titre (Niveau 3) -> Visible dans la TOC
             adoc_content += f"=== {req_id}: {title}\n\n"
             
-            # Métadonnées
-            adoc_content += f"**Priorité:** {priority_display} | **Statut:** `{status}`\n\n"
+            # 2. Métadonnées (Ref PEGS)
+            # On l'affiche juste en dessous du titre
+            if pegs_ref:
+                adoc_content += f"**Ref PEGS:** `{pegs_ref}`\n\n"
             
-            # Description : On utilise du gras (**) et un saut de ligne (+)
-            # Ce n'est plus un titre, donc invisible dans la TOC
+            # 3. Description (Gras + saut de ligne) -> Invisible dans la TOC
             if desc:
                 adoc_content += f"**Description** +\n{desc}\n\n"
             
-            # Justification (Reste dans un bloc note pour la lisibilité, invisible dans la TOC)
+            # 4. Justification (Bloc Note) -> Invisible dans la TOC
             if rationale:
                 adoc_content += f"[NOTE]\n.Justification\n====\n{rationale}\n====\n\n"
             
-            # Critères : Idem, gras + saut de ligne
+            # 5. Critères (Gras + saut de ligne) -> Invisible dans la TOC
             if accept_crit:
                 adoc_content += f"**Critères d'acceptation** +\n{accept_crit}\n\n"
             
