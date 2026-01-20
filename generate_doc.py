@@ -4,7 +4,7 @@ import sys
 
 # Configuration des chemins
 # On suppose que le script est à la racine et le fichier dans /Source
-EXCEL_PATH = os.path.join("Source", "requirements_app_PEGS.xlsx")
+EXCEL_PATH = os.path.join("source", "requirements_app_PEGS.xlsx")
 OUTPUT_ADOC = "output.adoc"
 
 def clean_text(text):
