@@ -6,7 +6,7 @@ on:
       - main
 
 permissions:
-  contents: read
+  contents: write  # <--- CHANGEMENT ICI : Important pour pouvoir push
   pages: write
   id-token: write
 
@@ -14,44 +14,45 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      # 1. Récupérer le code
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # 2. Installer Python et les dépendances Excel
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.9'
           
       - name: Install Python dependencies
-        run: |
-          pip install -r requirements.txt
+        run: pip install -r requirements.txt
 
-      # 3. Exécuter ton script Python (Génère output.adoc)
       - name: Generate AsciiDoc from Excel
         run: python generate_doc.py
 
-      # --- CORRECTION ---
-      # 4. Installer Ruby et Asciidoctor (Méthode native et stable)
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.0' # Version stable
+          ruby-version: '3.0'
 
       - name: Install Asciidoctor
         run: gem install asciidoctor
 
-      # 5. Convertir le .adoc en HTML via la ligne de commande
       - name: Build HTML
         run: asciidoctor output.adoc -o index.html
-      # ------------------
 
-      # 6. Publier le résultat sur GitHub Pages
+      # --- NOUVELLE ÉTAPE : COMMIT DANS GIT ---
+      - name: Commit and Push HTML
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add index.html
+          # On vérifie s'il y a des changements avant de commit pour éviter une erreur si rien n'a bougé
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Update documentation html [skip ci]" && git push)
+      # ----------------------------------------
+
+      # (Tu peux garder ou supprimer la partie "pages" ci-dessous selon ton choix)
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3 # Note: v3 est la dernière version
+        uses: actions/upload-pages-artifact@v3
         with:
           path: . 
-
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4 # Note: v4 est la dernière version
+        uses: actions/deploy-pages@v4
