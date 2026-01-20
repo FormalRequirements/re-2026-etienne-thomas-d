@@ -87,15 +87,11 @@ Chaque exigence est :
 
 ## 📂 Structure du dépôt
 
+- `\index.html`  
+Rapport HTML généré par le script, permettant de consulter le rapport depuis un navigateur.
+
 - `\README.md`  
 Fichier markdown de présentation du projet et de la démarche méthodologique.
-
-- \requirements :
-
-    - `requirements_reports.html`
-    Rapport HTML généré par le script, permettant de consulter le rapport depuis un navigateur.
-
-    - `requirements_reports.pdf`  
 
 - \scripts :
 
@@ -110,16 +106,26 @@ Fichier markdown de présentation du projet et de la démarche méthodologique.
 
 ---
 
-## 🛠️ Génération de documentation
+## 🛠️ Génération automatique de la documentation
 
-Les exigences sont stockées dans un fichier excel (tableur), permettant :
+La génération de la documentation est **entièrement automatisée** via **GitHub Actions**.
 
-- le filtrage et la priorisation,
-- la traçabilité des décisions,
-- la génération automatisée de documentation lisible (HTML, PDF),
-- une maintenance facilitée sur le long terme.
+### 🔄 Génération automatique
+- Toute modification du fichier source **Excel contenant les exigences**
+- suivie d’un **push sur le dépôt**
+- déclenche automatiquement un workflow de génération de documentation.
 
-Cette approche garantit la cohérence entre les différentes entre les différentes représentations des besoins.
+👉 Cela garantit que les documents générés sont **toujours à jour** et strictement alignés avec la source des exigences.
+
+### ▶️ Génération manuelle
+Il est également possible de lancer manuellement la génération de la documentation :
+
+1. Aller dans **Actions**
+2. Sélectionner **All workflows**
+3. Choisir **Generate Documentation**
+4. Cliquer sur **Run workflow**
+
+Cette option permet de rejouer la génération sans modifier les sources.
 
 ---
 
