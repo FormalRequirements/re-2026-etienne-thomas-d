@@ -1,0 +1,49 @@
+name: Generate Documentation
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. Récupérer le code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # 2. Installer Python et les dépendances
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+          
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      # 3. Exécuter ton script Python
+      - name: Generate AsciiDoc from Excel
+        run: python generate_doc.py
+
+      # 4. Convertir le .adoc en HTML (Utilisation de Asciidoctor)
+      - name: Build HTML
+        uses: asciidoctor/cli-action@v1.0
+        with:
+          # On convertit output.adoc en index.html
+          args: "-o index.html output.adoc"
+
+      # 5. Publier le résultat sur GitHub Pages (Hébergement gratuit)
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: . # On upload le dossier courant qui contient index.html
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v2
