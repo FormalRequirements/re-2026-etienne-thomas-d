@@ -7,7 +7,7 @@ import datetime
 EXCEL_PATH = os.path.join("source", "requirements_app_PEGS.xlsx")
 OUTPUT_ADOC = "output.adoc"
 
-# L'ordre défini précédemment
+# Ordre d'affichage des chapitres
 CATEGORY_ORDER = ["Goals", "Environment", "System", "Project"]
 
 def clean_text(text):
@@ -96,23 +96,24 @@ Source des données : `{os.path.basename(EXCEL_PATH)}`
 
             priority_display = get_priority_icon(moscow)
             
-            # Titre de l'exigence (Niveau 3)
+            # Titre de l'exigence (Niveau 3) -> Apparaît dans la TOC
             adoc_content += f"=== {req_id}: {title}\n\n"
             
             # Métadonnées
             adoc_content += f"**Priorité:** {priority_display} | **Statut:** `{status}`\n\n"
             
-            # Description (Niveau 4, texte simple)
+            # Description : On utilise du gras (**) et un saut de ligne (+)
+            # Ce n'est plus un titre, donc invisible dans la TOC
             if desc:
-                adoc_content += f"==== Description\n{desc}\n\n"
+                adoc_content += f"**Description** +\n{desc}\n\n"
             
-            # Justification (On garde le bloc NOTE car c'est une info contextuelle utile)
+            # Justification (Reste dans un bloc note pour la lisibilité, invisible dans la TOC)
             if rationale:
                 adoc_content += f"[NOTE]\n.Justification\n====\n{rationale}\n====\n\n"
             
-            # Critères d'acceptation (Niveau 4, texte simple, plus de cadre jaune)
+            # Critères : Idem, gras + saut de ligne
             if accept_crit:
-                adoc_content += f"==== Critères d'acceptation\n{accept_crit}\n\n"
+                adoc_content += f"**Critères d'acceptation** +\n{accept_crit}\n\n"
             
             # Séparateur visuel
             adoc_content += "---\n\n"
