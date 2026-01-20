@@ -18,32 +18,40 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # 2. Installer Python et les dépendances
+      # 2. Installer Python et les dépendances Excel
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.9'
           
-      - name: Install dependencies
+      - name: Install Python dependencies
         run: |
           pip install -r requirements.txt
 
-      # 3. Exécuter ton script Python
+      # 3. Exécuter ton script Python (Génère output.adoc)
       - name: Generate AsciiDoc from Excel
         run: python generate_doc.py
 
-      # 4. Convertir le .adoc en HTML (Utilisation de Asciidoctor)
-      - name: Build HTML
-        uses: asciidoctor/cli-action@v1.0
+      # --- CORRECTION ---
+      # 4. Installer Ruby et Asciidoctor (Méthode native et stable)
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
         with:
-          # On convertit output.adoc en index.html
-          args: "-o index.html output.adoc"
+          ruby-version: '3.0' # Version stable
 
-      # 5. Publier le résultat sur GitHub Pages (Hébergement gratuit)
+      - name: Install Asciidoctor
+        run: gem install asciidoctor
+
+      # 5. Convertir le .adoc en HTML via la ligne de commande
+      - name: Build HTML
+        run: asciidoctor output.adoc -o index.html
+      # ------------------
+
+      # 6. Publier le résultat sur GitHub Pages
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v3 # Note: v3 est la dernière version
         with:
-          path: . # On upload le dossier courant qui contient index.html
+          path: . 
 
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4 # Note: v4 est la dernière version
