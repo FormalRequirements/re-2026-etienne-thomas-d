@@ -1,21 +1,23 @@
-name: Attach Doc to Release
+name: Generate Documentation
 
 on:
+  # Se déclenche quand on publie une release
   release:
     types: [published]
+  # Se déclenche manuellement via le bouton (Nouveau !)
+  workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
-  build-and-attach:
+  build-and-generate:
     runs-on: ubuntu-latest
     steps:
-      # 1. Récupération du code
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # 2. Setup Python
+      # --- Installation et Génération (Inchangé) ---
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
@@ -24,11 +26,9 @@ jobs:
       - name: Install Python dependencies
         run: pip install -r requirements.txt
 
-      # 3. Génération du .adoc à partir de l'Excel
-      - name: Generate AsciiDoc
+      - name: Generate AsciiDoc from Excel
         run: python generate_doc.py
 
-      # 4. Setup Ruby & Asciidoctor
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
@@ -37,15 +37,22 @@ jobs:
       - name: Install Asciidoctor
         run: gem install asciidoctor
 
-      # 5. Conversion en HTML (Utilisation du style par défaut "Book")
       - name: Build HTML
         run: asciidoctor output.adoc -o index.html
+      # ---------------------------------------------
 
-      # 6. Upload du fichier dans la Release
+      # CAS 1 : C'est une Release -> On attache le fichier à la release
       - name: Upload HTML to Release
         uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/')
+        if: startsWith(github.ref, 'refs/tags/') # Sécurité : ne se lance que si c'est un tag
         with:
           files: index.html
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # CAS 2 : C'est un test manuel -> On rend le fichier téléchargeable dans "Actions"
+      - name: Upload Artifact (Manual Run)
+        uses: actions/upload-artifact@v4
+        with:
+          name: documentation-html
+          path: index.html
