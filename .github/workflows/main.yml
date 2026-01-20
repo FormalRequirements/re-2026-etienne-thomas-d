@@ -4,22 +4,24 @@ on:
   push:
     branches:
       - main
-    paths-ignore:
-      - 'index.html' # Sécurité supplémentaire : ignorer si seul le HTML change
+    # 🎯 LE CHANGEMENT EST ICI :
+    # Le workflow ne se lancera que si ce fichier précis est modifié dans le commit
+    paths:
+      - 'source/requirements_app_PEGS.xlsx'
+      
+  # On garde le déclenchement manuel au cas où
   workflow_dispatch:
 
 permissions:
-  contents: write # INDISPENSABLE pour pouvoir modifier le repo
+  contents: write
 
 jobs:
   build-and-commit:
     runs-on: ubuntu-latest
     steps:
-      # 1. Récupération du code
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # 2. Setup Python & Dépendances
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
@@ -28,11 +30,9 @@ jobs:
       - name: Install Python dependencies
         run: pip install pandas openpyxl
 
-      # 3. Génération du .adoc
       - name: Generate AsciiDoc
         run: python generate_doc.py
 
-      # 4. Setup Asciidoctor
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
@@ -41,20 +41,13 @@ jobs:
       - name: Install Asciidoctor
         run: gem install asciidoctor
 
-      # 5. Conversion en HTML (Écrase l'ancien index.html s'il existe)
       - name: Build HTML
         run: asciidoctor output.adoc -o index.html
 
-      # 6. COMMIT ET PUSH AUTOMATIQUE
+      # Commit & Push automatique
       - name: Commit and Push changes
         run: |
-          # Configuration de l'identité du robot
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          
-          # Ajout du fichier généré
           git add index.html
-          
-          # Vérification : y a-t-il vraiment des changements ?
-          # Si "git diff" dit qu'il n'y a rien, on ne fait rien (pour éviter une erreur)
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update index.html [skip ci]" && git push)
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Update docs from Excel change [skip ci]" && git push)

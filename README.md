@@ -1,6 +1,6 @@
 # Implémentation de la méthode PEGS – LIFT-TRACK (2026)
 
-## 📌 Présentation du projet
+## Présentation du projet
 
 Ce dépôt contient les exigences relative a *LIFT-TRACK*, une application **mobile-first** de suivi sportif destinée aux pratiquants de fitness et de musculation en cours de développement.
 
@@ -8,7 +8,7 @@ L’application est pensée pour une utilisation principale sur smartphone, en c
 
 ---
 
-## 🎯 Objectifs du dépôt
+## Objectifs du dépôt
 
 Ce dépôt a pour objectifs de :
 
@@ -16,12 +16,12 @@ Ce dépôt a pour objectifs de :
 - Définir une **base d’exigences claire, cohérente et structurée** pour l’application.
 - Centraliser toutes les exigences dans une **source unique de vérité**.
 
-⚠️ Ce dépôt décrit **l’application dans sa globalité** (produit, usages, contraintes, évolution)  
+Ce dépôt décrit **l’application dans sa globalité** (produit, usages, contraintes, évolution)  
 et **ne se concentre pas sur les détails d’implémentation technique ou d’API**.
 
 ---
 
-## 🧩 Périmètre fonctionnel de l’application
+## Périmètre fonctionnel de l’application
 
 ### Version 1 – Fonctionnalités cœur (Pratiquants)
 
@@ -62,7 +62,7 @@ Ces fonctionnalités sont volontairement exclues des premières versions afin de
 
 ---
 
-## 📐 Démarche d’ingénierie des exigences (PEGS)
+## Démarche d’ingénierie des exigences (PEGS)
 
 Toutes les exigences sont structurées selon la méthode **PEGS** :
 
@@ -129,7 +129,7 @@ Cette option permet de rejouer la génération sans modifier les sources.
 
 ---
 
-## 👥 Parties prenantes (Stakeholders)
+## Parties prenantes (Stakeholders)
 
 Les principales parties prenantes identifiées sont :
 
@@ -141,14 +141,14 @@ L’identification explicite des parties prenantes permet de justifier les exige
 
 ---
 
-## ✍️ Auteurs
+## Auteurs
 
 - **Étienne CARPENTIER**
 - **Thomas DOUMENG**
 
 ---
 
-## 📚 Contexte académique
+## Contexte académique
 
 Ce dépôt est réalisé dans le cadre d’un **travail académique en ingénierie des exigences**.  
 Il vise à démontrer :
