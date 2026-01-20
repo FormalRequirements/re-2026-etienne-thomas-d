@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.26">
-<title>Titre du Document</title>
+<title>Spécifications du Projet (PEGS)</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -433,19 +433,366 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 #footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/github.min.css">
 </head>
 <body class="book toc2 toc-left">
 <div id="header">
-<h1>Titre du Document</h1>
+<h1>Spécifications du Projet (PEGS)</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
 <li><a href="#_introduction">1. Introduction</a></li>
-<li><a href="#_section_depuis_excel">2. Section depuis Excel</a>
+<li><a href="#_environment">2. Environment</a>
 <ul class="sectlevel2">
-<li><a href="#_donnée_a">2.1. Donnée A</a></li>
-<li><a href="#_donnée_b">2.2. Donnée B</a></li>
-<li><a href="#_donnée_c">2.3. Donnée C</a></li>
+<li><a href="#_e_01_contraintes_dusage_en_salle">2.1. E-01 - Contraintes d’usage en salle</a>
+<ul class="sectlevel3">
+<li><a href="#_description">2.1.1. Description</a></li>
+<li><a href="#_justification">2.1.2. Justification</a></li>
+<li><a href="#_critères_dacceptation">2.1.3. Critères d&#8217;acceptation</a></li>
+</ul>
+</li>
+<li><a href="#_e_02_contraintes_de_temps">2.2. E-02 - Contraintes de temps</a>
+<ul class="sectlevel3">
+<li><a href="#_description_2">2.2.1. Description</a></li>
+<li><a href="#_justification_2">2.2.2. Justification</a></li>
+<li><a href="#_critères_dacceptation_2">2.2.3. Critères d&#8217;acceptation</a></li>
+</ul>
+</li>
+<li><a href="#_e_03_hypothèse_matériel">2.3. E-03 - Hypothèse matériel</a>
+<ul class="sectlevel3">
+<li><a href="#_description_3">2.3.1. Description</a></li>
+<li><a href="#_justification_3">2.3.2. Justification</a></li>
+<li><a href="#_critères_dacceptation_3">2.3.3. Critères d&#8217;acceptation</a></li>
+</ul>
+</li>
+<li><a href="#_e_04_invariant_dintégrité">2.4. E-04 - Invariant d’intégrité</a>
+<ul class="sectlevel3">
+<li><a href="#_description_4">2.4.1. Description</a></li>
+<li><a href="#_justification_4">2.4.2. Justification</a></li>
+<li><a href="#_critères_dacceptation_4">2.4.3. Critères d&#8217;acceptation</a></li>
+</ul>
+</li>
+<li><a href="#_e_05_contraintes_confidentialité_rgpd">2.5. E-05 - Contraintes confidentialité (RGPD)</a>
+<ul class="sectlevel3">
+<li><a href="#_description_5">2.5.1. Description</a></li>
+<li><a href="#_justification_5">2.5.2. Justification</a></li>
+<li><a href="#_critères_dacceptation_5">2.5.3. Critères d&#8217;acceptation</a></li>
+</ul>
+</li>
+<li><a href="#_e_06_glossaire">2.6. E-06 - Glossaire</a>
+<ul class="sectlevel3">
+<li><a href="#_description_6">2.6.1. Description</a></li>
+<li><a href="#_justification_6">2.6.2. Justification</a></li>
+<li><a href="#_critères_dacceptation_6">2.6.3. Critères d&#8217;acceptation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_goals">3. Goals</a>
+<ul class="sectlevel2">
+<li><a href="#_g_01_objectif_global">3.1. G-01 - Objectif global</a>
+<ul class="sectlevel3">
+<li><a href="#_description_7">3.1.1. Description</a></li>
+<li><a href="#_justification_7">3.1.2. Justification</a></li>
+<li><a href="#_critères_dacceptation_7">3.1.3. Critères d&#8217;acceptation</a></li>
+</ul>
+</li>
+<li><a href="#_g_02_situation_actuelle">3.2. G-02 - Situation actuelle</a>
+<ul class="sectlevel3">
+<li><a href="#_description_8">3.2.1. Description</a></li>
+<li><a href="#_justification_8">3.2.2. Justification</a></li>
+<li><a href="#_critères_dacceptation_8">3.2.3. Critères d&#8217;acceptation</a></li>
+</ul>
+</li>
+<li><a href="#_g_03_bénéfices_attendus">3.3. G-03 - Bénéfices attendus</a>
+<ul class="sectlevel3">
+<li><a href="#_description_9">3.3.1. Description</a></li>
+<li><a href="#_justification_9">3.3.2. Justification</a></li>
+<li><a href="#_critères_dacceptation_9">3.3.3. Critères d&#8217;acceptation</a></li>
+</ul>
+</li>
+<li><a href="#_g_04_scénarios_usage_mobile_first">3.4. G-04 - Scénarios usage (mobile-first)</a>
+<ul class="sectlevel3">
+<li><a href="#_description_10">3.4.1. Description</a></li>
+<li><a href="#_justification_10">3.4.2. Justification</a></li>
+<li><a href="#_critères_dacceptation_10">3.4.3. Critères d&#8217;acceptation</a></li>
+</ul>
+</li>
+<li><a href="#_g_05_exclusions_v1">3.5. G-05 - Exclusions V1</a>
+<ul class="sectlevel3">
+<li><a href="#_description_11">3.5.1. Description</a></li>
+<li><a href="#_justification_11">3.5.2. Justification</a></li>
+<li><a href="#_critères_dacceptation_11">3.5.3. Critères d&#8217;acceptation</a></li>
+</ul>
+</li>
+<li><a href="#_g_06_parties_prenantes">3.6. G-06 - Parties prenantes</a>
+<ul class="sectlevel3">
+<li><a href="#_description_12">3.6.1. Description</a></li>
+<li><a href="#_justification_12">3.6.2. Justification</a></li>
+<li><a href="#_critères_dacceptation_12">3.6.3. Critères d&#8217;acceptation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_project">4. Project</a>
+<ul class="sectlevel2">
+<li><a href="#_p_01_rôles_responsabilités">4.1. P-01 - Rôles &amp; responsabilités</a>
+<ul class="sectlevel3">
+<li><a href="#_description_13">4.1.1. Description</a></li>
+<li><a href="#_justification_13">4.1.2. Justification</a></li>
+<li><a href="#_critères_dacceptation_13">4.1.3. Critères d&#8217;acceptation</a></li>
+</ul>
+</li>
+<li><a href="#_p_02_livrables_v1">4.2. P-02 - Livrables V1</a>
+<ul class="sectlevel3">
+<li><a href="#_description_14">4.2.1. Description</a></li>
+<li><a href="#_justification_14">4.2.2. Justification</a></li>
+<li><a href="#_critères_dacceptation_14">4.2.3. Critères d&#8217;acceptation</a></li>
+</ul>
+</li>
+<li><a href="#_p_03_découpage_versions">4.3. P-03 - Découpage versions</a>
+<ul class="sectlevel3">
+<li><a href="#_description_15">4.3.1. Description</a></li>
+<li><a href="#_justification_15">4.3.2. Justification</a></li>
+<li><a href="#_critères_dacceptation_15">4.3.3. Critères d&#8217;acceptation</a></li>
+</ul>
+</li>
+<li><a href="#_p_04_process_exigences">4.4. P-04 - Process exigences</a>
+<ul class="sectlevel3">
+<li><a href="#_description_16">4.4.1. Description</a></li>
+<li><a href="#_justification_16">4.4.2. Justification</a></li>
+<li><a href="#_critères_dacceptation_16">4.4.3. Critères d&#8217;acceptation</a></li>
+</ul>
+</li>
+<li><a href="#_p_05_technologie_cible_app">4.5. P-05 - Technologie cible (app)</a>
+<ul class="sectlevel3">
+<li><a href="#_description_17">4.5.1. Description</a></li>
+<li><a href="#_justification_17">4.5.2. Justification</a></li>
+<li><a href="#_critères_dacceptation_17">4.5.3. Critères d&#8217;acceptation</a></li>
+</ul>
+</li>
+<li><a href="#_p_06_gestion_risques">4.6. P-06 - Gestion risques</a>
+<ul class="sectlevel3">
+<li><a href="#_description_18">4.6.1. Description</a></li>
+<li><a href="#_justification_18">4.6.2. Justification</a></li>
+<li><a href="#_critères_dacceptation_18">4.6.3. Critères d&#8217;acceptation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_system">5. System</a>
+<ul class="sectlevel2">
+<li><a href="#_s_01_composants_mobileweb">5.1. S-01 - Composants - Mobile/Web</a>
+<ul class="sectlevel3">
+<li><a href="#_description_19">5.1.1. Description</a></li>
+<li><a href="#_justification_19">5.1.2. Justification</a></li>
+<li><a href="#_critères_dacceptation_19">5.1.3. Critères d&#8217;acceptation</a></li>
+</ul>
+</li>
+<li><a href="#_s_02_composants_admin_contenu">5.2. S-02 - Composants - Admin contenu</a>
+<ul class="sectlevel3">
+<li><a href="#_description_20">5.2.1. Description</a></li>
+<li><a href="#_justification_20">5.2.2. Justification</a></li>
+<li><a href="#_critères_dacceptation_20">5.2.3. Critères d&#8217;acceptation</a></li>
+</ul>
+</li>
+<li><a href="#_s_10_compte_utilisateur">5.3. S-10 - Compte utilisateur</a>
+<ul class="sectlevel3">
+<li><a href="#_description_21">5.3.1. Description</a></li>
+<li><a href="#_justification_21">5.3.2. Justification</a></li>
+<li><a href="#_critères_dacceptation_21">5.3.3. Critères d&#8217;acceptation</a></li>
+</ul>
+</li>
+<li><a href="#_s_11_profil_préférences">5.4. S-11 - Profil &amp; préférences</a>
+<ul class="sectlevel3">
+<li><a href="#_description_22">5.4.1. Description</a></li>
+<li><a href="#_justification_22">5.4.2. Justification</a></li>
+<li><a href="#_critères_dacceptation_22">5.4.3. Critères d&#8217;acceptation</a></li>
+</ul>
+</li>
+<li><a href="#_s_12_bibliothèque_dexercices">5.5. S-12 - Bibliothèque d’exercices</a>
+<ul class="sectlevel3">
+<li><a href="#_description_23">5.5.1. Description</a></li>
+<li><a href="#_justification_23">5.5.2. Justification</a></li>
+<li><a href="#_critères_dacceptation_23">5.5.3. Critères d&#8217;acceptation</a></li>
+</ul>
+</li>
+<li><a href="#_s_13_création_de_séance">5.6. S-13 - Création de séance</a>
+<ul class="sectlevel3">
+<li><a href="#_description_24">5.6.1. Description</a></li>
+<li><a href="#_justification_24">5.6.2. Justification</a></li>
+<li><a href="#_critères_dacceptation_24">5.6.3. Critères d&#8217;acceptation</a></li>
+</ul>
+</li>
+<li><a href="#_s_14_exécution_de_séance_tracking">5.7. S-14 - Exécution de séance (tracking)</a>
+<ul class="sectlevel3">
+<li><a href="#_description_25">5.7.1. Description</a></li>
+<li><a href="#_justification_25">5.7.2. Justification</a></li>
+<li><a href="#_critères_dacceptation_25">5.7.3. Critères d&#8217;acceptation</a></li>
+</ul>
+</li>
+<li><a href="#_s_15_minuteur_de_repos">5.8. S-15 - Minuteur de repos</a>
+<ul class="sectlevel3">
+<li><a href="#_description_26">5.8.1. Description</a></li>
+<li><a href="#_justification_26">5.8.2. Justification</a></li>
+<li><a href="#_critères_dacceptation_26">5.8.3. Critères d&#8217;acceptation</a></li>
+</ul>
+</li>
+<li><a href="#_s_16_saisie_rapide_valeurs_précédentes">5.9. S-16 - Saisie rapide (valeurs précédentes)</a>
+<ul class="sectlevel3">
+<li><a href="#_description_27">5.9.1. Description</a></li>
+<li><a href="#_justification_27">5.9.2. Justification</a></li>
+<li><a href="#_critères_dacceptation_27">5.9.3. Critères d&#8217;acceptation</a></li>
+</ul>
+</li>
+<li><a href="#_s_17_historique_des_séances">5.10. S-17 - Historique des séances</a>
+<ul class="sectlevel3">
+<li><a href="#_description_28">5.10.1. Description</a></li>
+<li><a href="#_justification_28">5.10.2. Justification</a></li>
+<li><a href="#_critères_dacceptation_28">5.10.3. Critères d&#8217;acceptation</a></li>
+</ul>
+</li>
+<li><a href="#_s_18_records_pr">5.11. S-18 - Records (PR)</a>
+<ul class="sectlevel3">
+<li><a href="#_description_29">5.11.1. Description</a></li>
+<li><a href="#_justification_29">5.11.2. Justification</a></li>
+<li><a href="#_critères_dacceptation_29">5.11.3. Critères d&#8217;acceptation</a></li>
+</ul>
+</li>
+<li><a href="#_s_19_statistiques_simples">5.12. S-19 - Statistiques simples</a>
+<ul class="sectlevel3">
+<li><a href="#_description_30">5.12.1. Description</a></li>
+<li><a href="#_justification_30">5.12.2. Justification</a></li>
+<li><a href="#_critères_dacceptation_30">5.12.3. Critères d&#8217;acceptation</a></li>
+</ul>
+</li>
+<li><a href="#_s_20_templates_séances_types">5.13. S-20 - Templates / séances types</a>
+<ul class="sectlevel3">
+<li><a href="#_description_31">5.13.1. Description</a></li>
+<li><a href="#_justification_31">5.13.2. Justification</a></li>
+<li><a href="#_critères_dacceptation_31">5.13.3. Critères d&#8217;acceptation</a></li>
+</ul>
+</li>
+<li><a href="#_s_21_modificationannulation">5.14. S-21 - Modification/annulation</a>
+<ul class="sectlevel3">
+<li><a href="#_description_32">5.14.1. Description</a></li>
+<li><a href="#_justification_32">5.14.2. Justification</a></li>
+<li><a href="#_critères_dacceptation_32">5.14.3. Critères d&#8217;acceptation</a></li>
+</ul>
+</li>
+<li><a href="#_s_22_sauvegarde_synchronisation">5.15. S-22 - Sauvegarde &amp; synchronisation</a>
+<ul class="sectlevel3">
+<li><a href="#_description_33">5.15.1. Description</a></li>
+<li><a href="#_justification_33">5.15.2. Justification</a></li>
+<li><a href="#_critères_dacceptation_33">5.15.3. Critères d&#8217;acceptation</a></li>
+</ul>
+</li>
+<li><a href="#_s_23_gestion_conflits_simple">5.16. S-23 - Gestion conflits simple</a>
+<ul class="sectlevel3">
+<li><a href="#_description_34">5.16.1. Description</a></li>
+<li><a href="#_justification_34">5.16.2. Justification</a></li>
+<li><a href="#_critères_dacceptation_34">5.16.3. Critères d&#8217;acceptation</a></li>
+</ul>
+</li>
+<li><a href="#_s_24_export_données">5.17. S-24 - Export données</a>
+<ul class="sectlevel3">
+<li><a href="#_description_35">5.17.1. Description</a></li>
+<li><a href="#_justification_35">5.17.2. Justification</a></li>
+<li><a href="#_critères_dacceptation_35">5.17.3. Critères d&#8217;acceptation</a></li>
+</ul>
+</li>
+<li><a href="#_s_25_suivi_mensurations">5.18. S-25 - Suivi mensurations</a>
+<ul class="sectlevel3">
+<li><a href="#_description_36">5.18.1. Description</a></li>
+<li><a href="#_justification_36">5.18.2. Justification</a></li>
+<li><a href="#_critères_dacceptation_36">5.18.3. Critères d&#8217;acceptation</a></li>
+</ul>
+</li>
+<li><a href="#_s_26_partage_séance">5.19. S-26 - Partage séance</a>
+<ul class="sectlevel3">
+<li><a href="#_description_37">5.19.1. Description</a></li>
+<li><a href="#_justification_37">5.19.2. Justification</a></li>
+<li><a href="#_critères_dacceptation_37">5.19.3. Critères d&#8217;acceptation</a></li>
+</ul>
+</li>
+<li><a href="#_s_30_interface_utilisateur_responsive">5.20. S-30 - Interface utilisateur responsive</a>
+<ul class="sectlevel3">
+<li><a href="#_description_38">5.20.1. Description</a></li>
+<li><a href="#_justification_38">5.20.2. Justification</a></li>
+<li><a href="#_critères_dacceptation_38">5.20.3. Critères d&#8217;acceptation</a></li>
+</ul>
+</li>
+<li><a href="#_s_31_accessibilité_de_base">5.21. S-31 - Accessibilité de base</a>
+<ul class="sectlevel3">
+<li><a href="#_description_39">5.21.1. Description</a></li>
+<li><a href="#_justification_39">5.21.2. Justification</a></li>
+<li><a href="#_critères_dacceptation_39">5.21.3. Critères d&#8217;acceptation</a></li>
+</ul>
+</li>
+<li><a href="#_s_32_mode_sombre">5.22. S-32 - Mode sombre</a>
+<ul class="sectlevel3">
+<li><a href="#_description_40">5.22.1. Description</a></li>
+<li><a href="#_justification_40">5.22.2. Justification</a></li>
+<li><a href="#_critères_dacceptation_40">5.22.3. Critères d&#8217;acceptation</a></li>
+</ul>
+</li>
+<li><a href="#_s_40_scénario_démarrer_séance">5.23. S-40 - Scénario: Démarrer séance</a>
+<ul class="sectlevel3">
+<li><a href="#_description_41">5.23.1. Description</a></li>
+<li><a href="#_justification_41">5.23.2. Justification</a></li>
+<li><a href="#_critères_dacceptation_41">5.23.3. Critères d&#8217;acceptation</a></li>
+</ul>
+</li>
+<li><a href="#_s_41_scénario_offline_en_salle">5.24. S-41 - Scénario: Offline en salle</a>
+<ul class="sectlevel3">
+<li><a href="#_description_42">5.24.1. Description</a></li>
+<li><a href="#_justification_42">5.24.2. Justification</a></li>
+<li><a href="#_critères_dacceptation_42">5.24.3. Critères d&#8217;acceptation</a></li>
+</ul>
+</li>
+<li><a href="#_s_42_scénario_consultation_progression">5.25. S-42 - Scénario: Consultation progression</a>
+<ul class="sectlevel3">
+<li><a href="#_description_43">5.25.1. Description</a></li>
+<li><a href="#_justification_43">5.25.2. Justification</a></li>
+<li><a href="#_critères_dacceptation_43">5.25.3. Critères d&#8217;acceptation</a></li>
+</ul>
+</li>
+<li><a href="#_s_50_priorisation_v1">5.26. S-50 - Priorisation V1</a>
+<ul class="sectlevel3">
+<li><a href="#_description_44">5.26.1. Description</a></li>
+<li><a href="#_justification_44">5.26.2. Justification</a></li>
+<li><a href="#_critères_dacceptation_44">5.26.3. Critères d&#8217;acceptation</a></li>
+</ul>
+</li>
+<li><a href="#_s_51_performance_perçue">5.27. S-51 - Performance perçue</a>
+<ul class="sectlevel3">
+<li><a href="#_description_45">5.27.1. Description</a></li>
+<li><a href="#_justification_45">5.27.2. Justification</a></li>
+<li><a href="#_critères_dacceptation_45">5.27.3. Critères d&#8217;acceptation</a></li>
+</ul>
+</li>
+<li><a href="#_s_60_critères_dacceptation_testables">5.28. S-60 - Critères d’acceptation testables</a>
+<ul class="sectlevel3">
+<li><a href="#_description_46">5.28.1. Description</a></li>
+<li><a href="#_justification_46">5.28.2. Justification</a></li>
+<li><a href="#_critères_dacceptation_46">5.28.3. Critères d&#8217;acceptation</a></li>
+</ul>
+</li>
+<li><a href="#_s_61_fiabilité_des_données">5.29. S-61 - Fiabilité des données</a>
+<ul class="sectlevel3">
+<li><a href="#_description_47">5.29.1. Description</a></li>
+<li><a href="#_justification_47">5.29.2. Justification</a></li>
+<li><a href="#_critères_dacceptation_47">5.29.3. Critères d&#8217;acceptation</a></li>
+</ul>
+</li>
+<li><a href="#_s_62_sécurité_minimale">5.30. S-62 - Sécurité minimale</a>
+<ul class="sectlevel3">
+<li><a href="#_description_48">5.30.1. Description</a></li>
+<li><a href="#_justification_48">5.30.2. Justification</a></li>
+<li><a href="#_critères_dacceptation_48">5.30.3. Critères d&#8217;acceptation</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -456,29 +803,1418 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h2 id="_introduction">1. Introduction</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Ceci est un texte généré automatiquement depuis Python.</p>
+<p>Ce document est généré automatiquement à partir des exigences stockées dans le fichier Excel du projet.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_section_depuis_excel">2. Section depuis Excel</h2>
+<h2 id="_environment">2. Environment</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_donnée_a">2.1. Donnée A</h3>
+<h3 id="_e_01_contraintes_dusage_en_salle">2.1. E-01 - Contraintes d’usage en salle</h3>
 <div class="paragraph">
-<p>Description pour Donnée A&#8230;&#8203;</p>
+<p><strong>Priorité :</strong> <code>MUST</code></p>
+</div>
+<div class="sect3">
+<h4 id="_description">2.1.1. Description</h4>
+<div class="paragraph">
+<p>L’app doit fonctionner avec réseau instable et permettre la saisie sans dépendre d’une connexion continue.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_justification">2.1.2. Justification</h4>
+<div class="paragraph">
+<p><em>En salle : 4G/Wi-Fi souvent irréguliers.</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_critères_dacceptation">2.1.3. Critères d&#8217;acceptation</h4>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Mode offline : créer une séance et saisir des séries sans erreur même sans réseau.</p>
+</div>
+</blockquote>
+</div>
+<hr>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_donnée_b">2.2. Donnée B</h3>
+<h3 id="_e_02_contraintes_de_temps">2.2. E-02 - Contraintes de temps</h3>
 <div class="paragraph">
-<p>Description pour Donnée B&#8230;&#8203;</p>
+<p><strong>Priorité :</strong> <code>MUST</code></p>
+</div>
+<div class="sect3">
+<h4 id="_description_2">2.2.1. Description</h4>
+<div class="paragraph">
+<p>La saisie d’une série doit pouvoir se faire en &lt; 5 secondes via UI optimisée (valeurs récentes, boutons +/-, auto-focus).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_justification_2">2.2.2. Justification</h4>
+<div class="paragraph">
+<p><em>Saisie rapide = adoption.</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_critères_dacceptation_2">2.2.3. Critères d&#8217;acceptation</h4>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Test manuel : saisie d&#8217;une série en &lt; 5s sur mobile milieu de gamme.</p>
+</div>
+</blockquote>
+</div>
+<hr>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_donnée_c">2.3. Donnée C</h3>
+<h3 id="_e_03_hypothèse_matériel">2.3. E-03 - Hypothèse matériel</h3>
 <div class="paragraph">
-<p>Description pour Donnée C&#8230;&#8203;</p>
+<p><strong>Priorité :</strong> <code>SHOULD</code></p>
+</div>
+<div class="sect3">
+<h4 id="_description_3">2.3.1. Description</h4>
+<div class="paragraph">
+<p>L’utilisateur dispose d’un smartphone Android/iOS récent (≤ 5 ans) et d’un navigateur moderne.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_justification_3">2.3.2. Justification</h4>
+<div class="paragraph">
+<p><em>Cadrage réaliste sans viser les vieux appareils.</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_critères_dacceptation_3">2.3.3. Critères d&#8217;acceptation</h4>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Liste des environnements testés (au moins 1 Android + 1 navigateur desktop).</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_e_04_invariant_dintégrité">2.4. E-04 - Invariant d’intégrité</h3>
+<div class="paragraph">
+<p><strong>Priorité :</strong> <code>MUST</code></p>
+</div>
+<div class="sect3">
+<h4 id="_description_4">2.4.1. Description</h4>
+<div class="paragraph">
+<p>Une série validée ne doit jamais disparaître sans action explicite de l’utilisateur (suppression/annulation).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_justification_4">2.4.2. Justification</h4>
+<div class="paragraph">
+<p><em>La perte de données tue la confiance.</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_critères_dacceptation_4">2.4.3. Critères d&#8217;acceptation</h4>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Après redémarrage app, les séries saisies sont toujours présentes.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_e_05_contraintes_confidentialité_rgpd">2.5. E-05 - Contraintes confidentialité (RGPD)</h3>
+<div class="paragraph">
+<p><strong>Priorité :</strong> <code>MUST</code></p>
+</div>
+<div class="sect3">
+<h4 id="_description_5">2.5.1. Description</h4>
+<div class="paragraph">
+<p>L’app doit minimiser les données personnelles (principe de minimisation) et permettre suppression/export des données utilisateur.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_justification_5">2.5.2. Justification</h4>
+<div class="paragraph">
+<p><em>Exigence standard et attendue sur une app fitness.</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_critères_dacceptation_5">2.5.3. Critères d&#8217;acceptation</h4>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>L’utilisateur peut exporter et supprimer ses données depuis les réglages.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_e_06_glossaire">2.6. E-06 - Glossaire</h3>
+<div class="paragraph">
+<p><strong>Priorité :</strong> <code>SHOULD</code></p>
+</div>
+<div class="sect3">
+<h4 id="_description_6">2.6.1. Description</h4>
+<div class="paragraph">
+<p>Un glossaire doit définir les termes clés : séance, exercice, série, répétition, charge, PR, template, programme.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_justification_6">2.6.2. Justification</h4>
+<div class="paragraph">
+<p><em>Réduit les incompréhensions dans les exigences et l&#8217;UI.</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_critères_dacceptation_6">2.6.3. Critères d&#8217;acceptation</h4>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Le glossaire contient au moins 10 termes et est utilisé dans les descriptions.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_goals">3. Goals</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_g_01_objectif_global">3.1. G-01 - Objectif global</h3>
+<div class="paragraph">
+<p><strong>Priorité :</strong> <code>MUST</code></p>
+</div>
+<div class="sect3">
+<h4 id="_description_7">3.1.1. Description</h4>
+<div class="paragraph">
+<p>Permettre à un pratiquant de suivre ses entraînements de musculation/fitness simplement, de façon fiable et rapide.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_justification_7">3.1.2. Justification</h4>
+<div class="paragraph">
+<p><em>Alignement produit : app utile au quotidien.</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_critères_dacceptation_7">3.1.3. Critères d&#8217;acceptation</h4>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Un utilisateur peut enregistrer une séance complète en moins de 3 minutes de saisie cumulée (hors effort).</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_g_02_situation_actuelle">3.2. G-02 - Situation actuelle</h3>
+<div class="paragraph">
+<p><strong>Priorité :</strong> <code>MUST</code></p>
+</div>
+<div class="sect3">
+<h4 id="_description_8">3.2.1. Description</h4>
+<div class="paragraph">
+<p>Le pratiquant utilise actuellement notes papier/app générique, avec perte de données et manque de structure.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_justification_8">3.2.2. Justification</h4>
+<div class="paragraph">
+<p><em>Justifie la valeur : structure + historique + progression.</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_critères_dacceptation_8">3.2.3. Critères d&#8217;acceptation</h4>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Le document PEGS décrit au moins 2 solutions actuelles et leurs limites.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_g_03_bénéfices_attendus">3.3. G-03 - Bénéfices attendus</h3>
+<div class="paragraph">
+<p><strong>Priorité :</strong> <code>MUST</code></p>
+</div>
+<div class="sect3">
+<h4 id="_description_9">3.3.1. Description</h4>
+<div class="paragraph">
+<p>L’app doit aider à : (1) gagner du temps à la saisie, (2) visualiser la progression, (3) favoriser la régularité.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_justification_9">3.3.2. Justification</h4>
+<div class="paragraph">
+<p><em>Valeur utilisateur immédiate.</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_critères_dacceptation_9">3.3.3. Critères d&#8217;acceptation</h4>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Des écrans dédiés existent pour : saisie rapide + progression + fréquence.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_g_04_scénarios_usage_mobile_first">3.4. G-04 - Scénarios usage (mobile-first)</h3>
+<div class="paragraph">
+<p><strong>Priorité :</strong> <code>SHOULD</code></p>
+</div>
+<div class="sect3">
+<h4 id="_description_10">3.4.1. Description</h4>
+<div class="paragraph">
+<p>L’app doit être utilisable d’une main en salle : grands boutons, parcours court, interactions minimales.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_justification_10">3.4.2. Justification</h4>
+<div class="paragraph">
+<p><em>Usage réel en entraînement, contraintes de contexte.</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_critères_dacceptation_10">3.4.3. Critères d&#8217;acceptation</h4>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Un parcours 'Démarrer séance → saisir série → terminer' ≤ 5 actions principales.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_g_05_exclusions_v1">3.5. G-05 - Exclusions V1</h3>
+<div class="paragraph">
+<p><strong>Priorité :</strong> <code>SHOULD</code></p>
+</div>
+<div class="sect3">
+<h4 id="_description_11">3.5.1. Description</h4>
+<div class="paragraph">
+<p>La V1 exclut : marketplace coach, paiements, messagerie temps réel, IA d’analyse avancée, intégrations montres/santé.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_justification_11">3.5.2. Justification</h4>
+<div class="paragraph">
+<p><em>Évite les pièges à temps ; garde le focus sur le core.</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_critères_dacceptation_11">3.5.3. Critères d&#8217;acceptation</h4>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>La liste des exclusions est visible et validée.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_g_06_parties_prenantes">3.6. G-06 - Parties prenantes</h3>
+<div class="paragraph">
+<p><strong>Priorité :</strong> <code>MUST</code></p>
+</div>
+<div class="sect3">
+<h4 id="_description_12">3.6.1. Description</h4>
+<div class="paragraph">
+<p>Les parties prenantes minimum sont : pratiquant (utilisateur principal), développeur (solo), évaluateur (prof).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_justification_12">3.6.2. Justification</h4>
+<div class="paragraph">
+<p><em>Clarifie les attentes et l&#8217;arbitrage.</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_critères_dacceptation_12">3.6.3. Critères d&#8217;acceptation</h4>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Une section 'Stakeholders' liste besoins et critères de succès.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_project">4. Project</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_p_01_rôles_responsabilités">4.1. P-01 - Rôles &amp; responsabilités</h3>
+<div class="paragraph">
+<p><strong>Priorité :</strong> <code>MUST</code></p>
+</div>
+<div class="sect3">
+<h4 id="_description_13">4.1.1. Description</h4>
+<div class="paragraph">
+<p>Le projet doit définir les rôles minimum suivants : Pratiquant (utilisateur), Administrateur (gestion contenu) et, si activé, Coach (accès encadré).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_justification_13">4.1.2. Justification</h4>
+<div class="paragraph">
+<p><em>Évite les ambiguïtés et oriente la conception d&#8217;écrans/droits.</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_critères_dacceptation_13">4.1.3. Critères d&#8217;acceptation</h4>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Une matrice rôles→droits est disponible et couvre toutes les fonctionnalités V1.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_p_02_livrables_v1">4.2. P-02 - Livrables V1</h3>
+<div class="paragraph">
+<p><strong>Priorité :</strong> <code>MUST</code></p>
+</div>
+<div class="sect3">
+<h4 id="_description_14">4.2.1. Description</h4>
+<div class="paragraph">
+<p>La V1 doit livrer une application utilisable en conditions réelles pour enregistrer des séances (création, exécution, historique) avec sauvegarde fiable.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_justification_14">4.2.2. Justification</h4>
+<div class="paragraph">
+<p><em>Dogfooding rapide : valider l&#8217;usage avant d&#8217;ajouter des features.</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_critères_dacceptation_14">4.2.3. Critères d&#8217;acceptation</h4>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Un utilisateur peut enregistrer 10 séances complètes sur mobile sans bug bloquant.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_p_03_découpage_versions">4.3. P-03 - Découpage versions</h3>
+<div class="paragraph">
+<p><strong>Priorité :</strong> <code>SHOULD</code></p>
+</div>
+<div class="sect3">
+<h4 id="_description_15">4.3.1. Description</h4>
+<div class="paragraph">
+<p>Le projet doit maintenir un découpage V1/V2/V3 avec une liste explicite des exclusions de V1.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_justification_15">4.3.2. Justification</h4>
+<div class="paragraph">
+<p><em>Protège le Time-to-Code et évite de s&#8217;éparpiller</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_critères_dacceptation_15">4.3.3. Critères d&#8217;acceptation</h4>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Un document 'Scope V1' existe, avec une section 'Non inclus'.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_p_04_process_exigences">4.4. P-04 - Process exigences</h3>
+<div class="paragraph">
+<p><strong>Priorité :</strong> <code>MUST</code></p>
+</div>
+<div class="sect3">
+<h4 id="_description_16">4.4.1. Description</h4>
+<div class="paragraph">
+<p>Les exigences doivent être tracées (id unique), classées PEGS, et associées à des critères d’acceptation mesurables.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_justification_16">4.4.2. Justification</h4>
+<div class="paragraph">
+<p><em>Facilite l&#8217;évaluation académique et le pilotage.</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_critères_dacceptation_16">4.4.3. Critères d&#8217;acceptation</h4>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>100% des exigences ont id + PEGS + MoSCoW + critères d’acceptation.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_p_05_technologie_cible_app">4.5. P-05 - Technologie cible (app)</h3>
+<div class="paragraph">
+<p><strong>Priorité :</strong> <code>SHOULD</code></p>
+</div>
+<div class="sect3">
+<h4 id="_description_17">4.5.1. Description</h4>
+<div class="paragraph">
+<p>L’application doit être utilisable sur mobile en priorité et accessible sur navigateur (desktop) pour consultation et gestion.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_justification_17">4.5.2. Justification</h4>
+<div class="paragraph">
+<p><em>Maximise l&#8217;usage réel sans multiplier les apps natives au départ.</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_critères_dacceptation_17">4.5.3. Critères d&#8217;acceptation</h4>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>La même base fonctionnelle est accessible sur téléphone et desktop.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_p_06_gestion_risques">4.6. P-06 - Gestion risques</h3>
+<div class="paragraph">
+<p><strong>Priorité :</strong> <code>SHOULD</code></p>
+</div>
+<div class="sect3">
+<h4 id="_description_18">4.6.1. Description</h4>
+<div class="paragraph">
+<p>Le projet doit identifier 5 risques majeurs (données perdues, offline, perf mobile, complexité UX, dette) et des mitigations simples.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_justification_18">4.6.2. Justification</h4>
+<div class="paragraph">
+<p><em>Réduit les échecs classiques d&#8217;une app perso en solo-dev.</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_critères_dacceptation_18">4.6.3. Critères d&#8217;acceptation</h4>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Un tableau risques/impact/mitigation existe.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_system">5. System</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_s_01_composants_mobileweb">5.1. S-01 - Composants - Mobile/Web</h3>
+<div class="paragraph">
+<p><strong>Priorité :</strong> <code>MUST</code></p>
+</div>
+<div class="sect3">
+<h4 id="_description_19">5.1.1. Description</h4>
+<div class="paragraph">
+<p>Le système doit inclure au minimum : une interface mobile (PWA ou app), une interface web desktop, et une persistance de données fiable (local + serveur).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_justification_19">5.1.2. Justification</h4>
+<div class="paragraph">
+<p><em>Vision 'app globale' (pas juste API).</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_critères_dacceptation_19">5.1.3. Critères d&#8217;acceptation</h4>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Un schéma des composants est fourni.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s_02_composants_admin_contenu">5.2. S-02 - Composants - Admin contenu</h3>
+<div class="paragraph">
+<p><strong>Priorité :</strong> <code>SHOULD</code></p>
+</div>
+<div class="sect3">
+<h4 id="_description_20">5.2.1. Description</h4>
+<div class="paragraph">
+<p>Le système doit prévoir un espace d’administration pour gérer la bibliothèque d’exercices (CRUD, tags, groupes musculaires).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_justification_20">5.2.2. Justification</h4>
+<div class="paragraph">
+<p><em>Évite d&#8217;éditer en base / facilite l’évolution contenu.</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_critères_dacceptation_20">5.2.3. Critères d&#8217;acceptation</h4>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Un admin peut ajouter/modifier un exercice et le voir côté utilisateur.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s_10_compte_utilisateur">5.3. S-10 - Compte utilisateur</h3>
+<div class="paragraph">
+<p><strong>Priorité :</strong> <code>MUST</code></p>
+</div>
+<div class="sect3">
+<h4 id="_description_21">5.3.1. Description</h4>
+<div class="paragraph">
+<p>L’app doit permettre la création de compte, la connexion, la déconnexion et la récupération de mot de passe.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_justification_21">5.3.2. Justification</h4>
+<div class="paragraph">
+<p><em>Base d’un usage multi-appareils + sauvegarde.</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_critères_dacceptation_21">5.3.3. Critères d&#8217;acceptation</h4>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Création/connexion/déconnexion testées avec succès.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s_11_profil_préférences">5.4. S-11 - Profil &amp; préférences</h3>
+<div class="paragraph">
+<p><strong>Priorité :</strong> <code>MUST</code></p>
+</div>
+<div class="sect3">
+<h4 id="_description_22">5.4.1. Description</h4>
+<div class="paragraph">
+<p>L’utilisateur doit pouvoir définir ses préférences : unités (kg/lb), langue (si supportée), thème (clair/sombre), repos par défaut.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_justification_22">5.4.2. Justification</h4>
+<div class="paragraph">
+<p><em>Personnalisation minimale utile en salle.</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_critères_dacceptation_22">5.4.3. Critères d&#8217;acceptation</h4>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Les préférences impactent l’affichage (ex : kg/lb) immédiatement.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s_12_bibliothèque_dexercices">5.5. S-12 - Bibliothèque d’exercices</h3>
+<div class="paragraph">
+<p><strong>Priorité :</strong> <code>MUST</code></p>
+</div>
+<div class="sect3">
+<h4 id="_description_23">5.5.1. Description</h4>
+<div class="paragraph">
+<p>L’utilisateur doit pouvoir consulter et rechercher des exercices, filtrer par groupe musculaire, et voir une fiche (consignes, muscles ciblés).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_justification_23">5.5.2. Justification</h4>
+<div class="paragraph">
+<p><em>Accélère la saisie et réduit les erreurs.</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_critères_dacceptation_23">5.5.3. Critères d&#8217;acceptation</h4>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Recherche + filtre fonctionnels ; fiche exercice affichée.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s_13_création_de_séance">5.6. S-13 - Création de séance</h3>
+<div class="paragraph">
+<p><strong>Priorité :</strong> <code>MUST</code></p>
+</div>
+<div class="sect3">
+<h4 id="_description_24">5.6.1. Description</h4>
+<div class="paragraph">
+<p>L’utilisateur doit pouvoir créer une séance avec nom, date, et liste d’exercices.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_justification_24">5.6.2. Justification</h4>
+<div class="paragraph">
+<p><em>Noyau fonctionnel.</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_critères_dacceptation_24">5.6.3. Critères d&#8217;acceptation</h4>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Créer une séance avec ≥ 3 exercices et la retrouver dans l’historique.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s_14_exécution_de_séance_tracking">5.7. S-14 - Exécution de séance (tracking)</h3>
+<div class="paragraph">
+<p><strong>Priorité :</strong> <code>MUST</code></p>
+</div>
+<div class="sect3">
+<h4 id="_description_25">5.7.1. Description</h4>
+<div class="paragraph">
+<p>L’utilisateur doit pouvoir démarrer une séance et enregistrer, pour chaque exercice, des séries (répétitions, charge, RPE optionnel).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_justification_25">5.7.2. Justification</h4>
+<div class="paragraph">
+<p><em>Suivi réel en salle.</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_critères_dacceptation_25">5.7.3. Critères d&#8217;acceptation</h4>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Enregistrer ≥ 10 séries sur une séance et terminer la séance.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s_15_minuteur_de_repos">5.8. S-15 - Minuteur de repos</h3>
+<div class="paragraph">
+<p><strong>Priorité :</strong> <code>MUST</code></p>
+</div>
+<div class="sect3">
+<h4 id="_description_26">5.8.1. Description</h4>
+<div class="paragraph">
+<p>L’app doit proposer un minuteur de repos configurable par exercice ou global, déclenchable en un geste après validation de série.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_justification_26">5.8.2. Justification</h4>
+<div class="paragraph">
+<p><em>Soutient le flux d’entraînement.</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_critères_dacceptation_26">5.8.3. Critères d&#8217;acceptation</h4>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Après validation série, minuteur démarre en ≤ 1 action.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s_16_saisie_rapide_valeurs_précédentes">5.9. S-16 - Saisie rapide (valeurs précédentes)</h3>
+<div class="paragraph">
+<p><strong>Priorité :</strong> <code>SHOULD</code></p>
+</div>
+<div class="sect3">
+<h4 id="_description_27">5.9.1. Description</h4>
+<div class="paragraph">
+<p>Lors d’une série, l’app doit préremplir les champs avec la dernière série réalisée sur cet exercice (ou séance précédente).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_justification_27">5.9.2. Justification</h4>
+<div class="paragraph">
+<p><em>Gros gain de temps.</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_critères_dacceptation_27">5.9.3. Critères d&#8217;acceptation</h4>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Préremplissage visible et modifiable ; testé sur 2 séances successives.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s_17_historique_des_séances">5.10. S-17 - Historique des séances</h3>
+<div class="paragraph">
+<p><strong>Priorité :</strong> <code>MUST</code></p>
+</div>
+<div class="sect3">
+<h4 id="_description_28">5.10.1. Description</h4>
+<div class="paragraph">
+<p>L’utilisateur doit pouvoir consulter l’historique des séances (liste + détail) et filtrer par période.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_justification_28">5.10.2. Justification</h4>
+<div class="paragraph">
+<p><em>Accès aux données enregistrées.</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_critères_dacceptation_28">5.10.3. Critères d&#8217;acceptation</h4>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Afficher les séances des 30 derniers jours + détail d’une séance.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s_18_records_pr">5.11. S-18 - Records (PR)</h3>
+<div class="paragraph">
+<p><strong>Priorité :</strong> <code>SHOULD</code></p>
+</div>
+<div class="sect3">
+<h4 id="_description_29">5.11.1. Description</h4>
+<div class="paragraph">
+<p>L’app doit détecter et afficher les records personnels (charge max, reps max à charge donnée, volume) par exercice.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_justification_29">5.11.2. Justification</h4>
+<div class="paragraph">
+<p><em>Motivation et lecture progression.</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_critères_dacceptation_29">5.11.3. Critères d&#8217;acceptation</h4>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Un PR est mis à jour automatiquement après une nouvelle perf.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s_19_statistiques_simples">5.12. S-19 - Statistiques simples</h3>
+<div class="paragraph">
+<p><strong>Priorité :</strong> <code>SHOULD</code></p>
+</div>
+<div class="sect3">
+<h4 id="_description_30">5.12.1. Description</h4>
+<div class="paragraph">
+<p>L’app doit afficher des statistiques simples : volume hebdo, fréquence, top exercices, temps moyen de séance.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_justification_30">5.12.2. Justification</h4>
+<div class="paragraph">
+<p><em>Bénéfice attendu G.3.</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_critères_dacceptation_30">5.12.3. Critères d&#8217;acceptation</h4>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Un écran stats existe et reflète les séances saisies.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s_20_templates_séances_types">5.13. S-20 - Templates / séances types</h3>
+<div class="paragraph">
+<p><strong>Priorité :</strong> <code>MUST</code></p>
+</div>
+<div class="sect3">
+<h4 id="_description_31">5.13.1. Description</h4>
+<div class="paragraph">
+<p>L’utilisateur doit pouvoir sauvegarder une séance comme template et relancer un entraînement à partir d’un template.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_justification_31">5.13.2. Justification</h4>
+<div class="paragraph">
+<p><em>Accélère l’usage récurrent.</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_critères_dacceptation_31">5.13.3. Critères d&#8217;acceptation</h4>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Créer un template et démarrer une séance depuis ce template.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s_21_modificationannulation">5.14. S-21 - Modification/annulation</h3>
+<div class="paragraph">
+<p><strong>Priorité :</strong> <code>SHOULD</code></p>
+</div>
+<div class="sect3">
+<h4 id="_description_32">5.14.1. Description</h4>
+<div class="paragraph">
+<p>L’utilisateur doit pouvoir modifier une série (corriger une charge/reps) et annuler la dernière action rapidement.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_justification_32">5.14.2. Justification</h4>
+<div class="paragraph">
+<p><em>Évite la frustration en saisie mobile.</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_critères_dacceptation_32">5.14.3. Critères d&#8217;acceptation</h4>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Modifier une série existante et vérifier recalcul des stats.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s_22_sauvegarde_synchronisation">5.15. S-22 - Sauvegarde &amp; synchronisation</h3>
+<div class="paragraph">
+<p><strong>Priorité :</strong> <code>MUST</code></p>
+</div>
+<div class="sect3">
+<h4 id="_description_33">5.15.1. Description</h4>
+<div class="paragraph">
+<p>Les données doivent être sauvegardées localement immédiatement, puis synchronisées au serveur dès que possible.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_justification_33">5.15.2. Justification</h4>
+<div class="paragraph">
+<p><em>Fiabilité + offline.</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_critères_dacceptation_33">5.15.3. Critères d&#8217;acceptation</h4>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Couper le réseau : saisie ok ; remettre réseau : synchro se fait sans perte.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s_23_gestion_conflits_simple">5.16. S-23 - Gestion conflits simple</h3>
+<div class="paragraph">
+<p><strong>Priorité :</strong> <code>MUST</code></p>
+</div>
+<div class="sect3">
+<h4 id="_description_34">5.16.1. Description</h4>
+<div class="paragraph">
+<p>En cas de modification concurrente (2 appareils), le système doit appliquer une stratégie simple : dernier enregistrement gagne, avec avertissement.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_justification_34">5.16.2. Justification</h4>
+<div class="paragraph">
+<p><em>Évite une usine à gaz tout en restant cohérent.</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_critères_dacceptation_34">5.16.3. Critères d&#8217;acceptation</h4>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Simuler 2 modifications : l’utilisateur voit un message de conflit et le résultat final.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s_24_export_données">5.17. S-24 - Export données</h3>
+<div class="paragraph">
+<p><strong>Priorité :</strong> <code>SHOULD</code></p>
+</div>
+<div class="sect3">
+<h4 id="_description_35">5.17.1. Description</h4>
+<div class="paragraph">
+<p>L’utilisateur doit pouvoir exporter ses données (CSV/JSON) depuis les réglages.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_justification_35">5.17.2. Justification</h4>
+<div class="paragraph">
+<p><em>Portabilité + devoir + RGPD.</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_critères_dacceptation_35">5.17.3. Critères d&#8217;acceptation</h4>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Téléchargement export ; fichier contient séances + séries.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s_25_suivi_mensurations">5.18. S-25 - Suivi mensurations</h3>
+<div class="paragraph">
+<p><strong>Priorité :</strong> <code>COULD</code></p>
+</div>
+<div class="sect3">
+<h4 id="_description_36">5.18.1. Description</h4>
+<div class="paragraph">
+<p>L’app peut permettre de saisir poids corporel et mensurations (optionnel).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_justification_36">5.18.2. Justification</h4>
+<div class="paragraph">
+<p><em>Valeur mais non core V1.</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_critères_dacceptation_36">5.18.3. Critères d&#8217;acceptation</h4>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Ajouter une mesure et l’afficher sur une courbe simple.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s_26_partage_séance">5.19. S-26 - Partage séance</h3>
+<div class="paragraph">
+<p><strong>Priorité :</strong> <code>COULD</code></p>
+</div>
+<div class="sect3">
+<h4 id="_description_37">5.19.1. Description</h4>
+<div class="paragraph">
+<p>L’app peut permettre de partager un résumé de séance (image ou lien).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_justification_37">5.19.2. Justification</h4>
+<div class="paragraph">
+<p><em>Nice-to-have ; risque de dérive.</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_critères_dacceptation_37">5.19.3. Critères d&#8217;acceptation</h4>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Partager un résumé lisible via applications du téléphone.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s_30_interface_utilisateur_responsive">5.20. S-30 - Interface utilisateur responsive</h3>
+<div class="paragraph">
+<p><strong>Priorité :</strong> <code>MUST</code></p>
+</div>
+<div class="sect3">
+<h4 id="_description_38">5.20.1. Description</h4>
+<div class="paragraph">
+<p>L’interface doit être responsive et optimisée mobile (priorité), tout en restant utilisable sur desktop.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_justification_38">5.20.2. Justification</h4>
+<div class="paragraph">
+<p><em>App globale : mobile + web.</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_critères_dacceptation_38">5.20.3. Critères d&#8217;acceptation</h4>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Même parcours possible sur mobile et desktop sans blocage.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s_31_accessibilité_de_base">5.21. S-31 - Accessibilité de base</h3>
+<div class="paragraph">
+<p><strong>Priorité :</strong> <code>SHOULD</code></p>
+</div>
+<div class="sect3">
+<h4 id="_description_39">5.21.1. Description</h4>
+<div class="paragraph">
+<p>L’app doit respecter une accessibilité minimale : taille de police lisible, contrastes corrects, navigation clavier sur web.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_justification_39">5.21.2. Justification</h4>
+<div class="paragraph">
+<p><em>Qualité et inclusivité sans surcoût énorme.</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_critères_dacceptation_39">5.21.3. Critères d&#8217;acceptation</h4>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Audit manuel : zoom 200% ok ; tabulation web ok.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s_32_mode_sombre">5.22. S-32 - Mode sombre</h3>
+<div class="paragraph">
+<p><strong>Priorité :</strong> <code>SHOULD</code></p>
+</div>
+<div class="sect3">
+<h4 id="_description_40">5.22.1. Description</h4>
+<div class="paragraph">
+<p>L’app doit proposer un mode sombre (au moins sur mobile).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_justification_40">5.22.2. Justification</h4>
+<div class="paragraph">
+<p><em>Confort en salle/faible lumière.</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_critères_dacceptation_40">5.22.3. Critères d&#8217;acceptation</h4>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Toggle mode sombre ; persistance du choix.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s_40_scénario_démarrer_séance">5.23. S-40 - Scénario: Démarrer séance</h3>
+<div class="paragraph">
+<p><strong>Priorité :</strong> <code>MUST</code></p>
+</div>
+<div class="sect3">
+<h4 id="_description_41">5.23.1. Description</h4>
+<div class="paragraph">
+<p>Scénario : depuis l’accueil, l’utilisateur démarre une séance (template ou nouvelle), voit la liste d’exercices et peut saisir la première série.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_justification_41">5.23.2. Justification</h4>
+<div class="paragraph">
+<p><em>Valide le flux principal.</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_critères_dacceptation_41">5.23.3. Critères d&#8217;acceptation</h4>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Parcours testé de bout en bout sans navigation inutile.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s_41_scénario_offline_en_salle">5.24. S-41 - Scénario: Offline en salle</h3>
+<div class="paragraph">
+<p><strong>Priorité :</strong> <code>MUST</code></p>
+</div>
+<div class="sect3">
+<h4 id="_description_42">5.24.1. Description</h4>
+<div class="paragraph">
+<p>Scénario : réseau coupé, l’utilisateur exécute la séance complète ; à la reconnexion, la séance est synchronisée.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_justification_42">5.24.2. Justification</h4>
+<div class="paragraph">
+<p><em>Critique pour la confiance.</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_critères_dacceptation_42">5.24.3. Critères d&#8217;acceptation</h4>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Test en mode avion : séance complète sauvegardée puis sync.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s_42_scénario_consultation_progression">5.25. S-42 - Scénario: Consultation progression</h3>
+<div class="paragraph">
+<p><strong>Priorité :</strong> <code>SHOULD</code></p>
+</div>
+<div class="sect3">
+<h4 id="_description_43">5.25.1. Description</h4>
+<div class="paragraph">
+<p>Scénario : l’utilisateur ouvre un exercice et voit l’évolution (dernières perfs + PR).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_justification_43">5.25.2. Justification</h4>
+<div class="paragraph">
+<p><em>Bénéfice progression.</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_critères_dacceptation_43">5.25.3. Critères d&#8217;acceptation</h4>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Vue 'historique exercice' affiche au moins 5 dernières performances.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s_50_priorisation_v1">5.26. S-50 - Priorisation V1</h3>
+<div class="paragraph">
+<p><strong>Priorité :</strong> <code>MUST</code></p>
+</div>
+<div class="sect3">
+<h4 id="_description_44">5.26.1. Description</h4>
+<div class="paragraph">
+<p>La V1 doit prioriser : tracking séance, bibliothèque exercices, historique, sauvegarde/sync. Tout le reste est différable.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_justification_44">5.26.2. Justification</h4>
+<div class="paragraph">
+<p><em>Time-to-code : éviter l’over-engineering.</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_critères_dacceptation_44">5.26.3. Critères d&#8217;acceptation</h4>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Backlog montre ces items en MUST ; V2/V3 en SHOULD/COULD.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s_51_performance_perçue">5.27. S-51 - Performance perçue</h3>
+<div class="paragraph">
+<p><strong>Priorité :</strong> <code>SHOULD</code></p>
+</div>
+<div class="sect3">
+<h4 id="_description_45">5.27.1. Description</h4>
+<div class="paragraph">
+<p>Les écrans principaux doivent s’ouvrir en &lt; 1 seconde sur un smartphone milieu de gamme (hors 1er chargement).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_justification_45">5.27.2. Justification</h4>
+<div class="paragraph">
+<p><em>Adoption : la lenteur tue l’usage.</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_critères_dacceptation_45">5.27.3. Critères d&#8217;acceptation</h4>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Mesure manuelle : navigation accueil→séance &lt; 1s.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s_60_critères_dacceptation_testables">5.28. S-60 - Critères d’acceptation testables</h3>
+<div class="paragraph">
+<p><strong>Priorité :</strong> <code>MUST</code></p>
+</div>
+<div class="sect3">
+<h4 id="_description_46">5.28.1. Description</h4>
+<div class="paragraph">
+<p>Chaque fonctionnalité V1 doit être validée par un scénario de test manuel reproductible (Given/When/Then).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_justification_46">5.28.2. Justification</h4>
+<div class="paragraph">
+<p><em>Aide devoir + qualité sans tests lourds.</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_critères_dacceptation_46">5.28.3. Critères d&#8217;acceptation</h4>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Un fichier de tests manuels couvre 100% des MUST V1.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s_61_fiabilité_des_données">5.29. S-61 - Fiabilité des données</h3>
+<div class="paragraph">
+<p><strong>Priorité :</strong> <code>MUST</code></p>
+</div>
+<div class="sect3">
+<h4 id="_description_47">5.29.1. Description</h4>
+<div class="paragraph">
+<p>Après crash/restart, l’app doit retrouver l’état stable (séances et séries sauvegardées), sans corruption.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_justification_47">5.29.2. Justification</h4>
+<div class="paragraph">
+<p><em>Invariant E.6 appliqué.</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_critères_dacceptation_47">5.29.3. Critères d&#8217;acceptation</h4>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Test : forcer arrêt app puis relance : données intactes.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s_62_sécurité_minimale">5.30. S-62 - Sécurité minimale</h3>
+<div class="paragraph">
+<p><strong>Priorité :</strong> <code>SHOULD</code></p>
+</div>
+<div class="sect3">
+<h4 id="_description_48">5.30.1. Description</h4>
+<div class="paragraph">
+<p>Les données en transit doivent être protégées (HTTPS) et les mots de passe stockés de façon sécurisée (hash robuste).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_justification_48">5.30.2. Justification</h4>
+<div class="paragraph">
+<p><em>Hygiène de base, sans faire une thèse sécurité.</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_critères_dacceptation_48">5.30.3. Critères d&#8217;acceptation</h4>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Scan : pas de mot de passe en clair ; connexion via HTTPS.</p>
+</div>
+</blockquote>
+</div>
+<hr>
 </div>
 </div>
 </div>
@@ -486,8 +2222,15 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2026-01-20 14:42:45 UTC
+Last updated 2026-01-20 15:01:22 UTC
 </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+<script>
+if (!hljs.initHighlighting.called) {
+  hljs.initHighlighting.called = true
+  ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+}
+</script>
 </body>
 </html>
