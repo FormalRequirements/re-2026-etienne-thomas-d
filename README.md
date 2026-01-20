@@ -13,6 +13,13 @@ Ce dépôt contient les exigences relative a *LIFT-TRACK*, une application **mob
 
 L’application est pensée pour une utilisation principale sur smartphone, en conditions réelles d’entraînement, avec une extension ultérieure vers des usages desktop, notamment pour des coachs sportifs.
 
+### Consulter le rapport d'exigence
+
+Pour consulter le rapport d'exigence, il suffit de se rendre à l’adresse suivante :  
+[https://formalrequirements.github.io/re-2026-etienne-thomas-d/](https://formalrequirements.github.io/re-2026-etienne-thomas-d/)
+
+Le rapport est accessible en ligne et toujours synchronisé avec la dernière version des exigences du projet.
+
 ---
 
 ## Objectifs du dépôt
@@ -132,10 +139,6 @@ Il est également possible de lancer manuellement la génération de la document
 4. Cliquer sur **Run workflow**
 
 Cette option permet de rejouer la génération sans modifier les sources.
-
-### Consulter le rapport d'exigence
-
-
 
 ---
 
