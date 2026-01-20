@@ -6,6 +6,8 @@ on:
       - main
     paths-ignore:
       - 'index.html' # Sécurité supplémentaire : ignorer si seul le HTML change
+    paths:
+      - 'source/requiorements_app_PEGS.xlsx'
   workflow_dispatch:
 
 permissions:
