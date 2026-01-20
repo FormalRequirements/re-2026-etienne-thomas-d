@@ -1,25 +1,25 @@
 name: Generate Documentation
 
 on:
-  # 1. Se déclenche quand tu push sur la branche main
   push:
     branches:
       - main
-  # 2. Se déclenche manuellement via le bouton (si besoin)
+    paths-ignore:
+      - 'index.html' # Sécurité supplémentaire : ignorer si seul le HTML change
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write # INDISPENSABLE pour pouvoir modifier le repo
 
 jobs:
-  build-and-generate:
+  build-and-commit:
     runs-on: ubuntu-latest
     steps:
-      # --- Récupération du code ---
+      # 1. Récupération du code
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # --- Configuration Python & Dépendances ---
+      # 2. Setup Python & Dépendances
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
@@ -28,12 +28,11 @@ jobs:
       - name: Install Python dependencies
         run: pip install pandas openpyxl
 
-      # --- Génération du fichier .adoc ---
-      # (Assure-toi que ton script pointe bien vers "source" en minuscule)
+      # 3. Génération du .adoc
       - name: Generate AsciiDoc
         run: python generate_doc.py
 
-      # --- Configuration Ruby & Asciidoctor ---
+      # 4. Setup Asciidoctor
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
@@ -42,14 +41,20 @@ jobs:
       - name: Install Asciidoctor
         run: gem install asciidoctor
 
-      # --- Conversion en HTML ---
+      # 5. Conversion en HTML (Écrase l'ancien index.html s'il existe)
       - name: Build HTML
         run: asciidoctor output.adoc -o index.html
 
-      # --- Sauvegarde du résultat (Artifact) ---
-      # Le fichier sera téléchargeable dans le résumé de l'Action
-      - name: Upload HTML Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: documentation-html
-          path: index.html
+      # 6. COMMIT ET PUSH AUTOMATIQUE
+      - name: Commit and Push changes
+        run: |
+          # Configuration de l'identité du robot
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          
+          # Ajout du fichier généré
+          git add index.html
+          
+          # Vérification : y a-t-il vraiment des changements ?
+          # Si "git diff" dit qu'il n'y a rien, on ne fait rien (pour éviter une erreur)
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update index.html [skip ci]" && git push)
