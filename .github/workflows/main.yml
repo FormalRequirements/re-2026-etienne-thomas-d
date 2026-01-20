@@ -1,22 +1,21 @@
-name: Generate Documentation
+name: Attach Doc to Release
 
 on:
-  push:
-    branches:
-      - main
+  release:
+    types: [published]
 
 permissions:
-  contents: write  # <--- CHANGEMENT ICI : Important pour pouvoir push
-  pages: write
-  id-token: write
+  contents: write
 
 jobs:
-  build-and-deploy:
+  build-and-attach:
     runs-on: ubuntu-latest
     steps:
+      # 1. Récupération du code
       - name: Checkout code
         uses: actions/checkout@v3
 
+      # 2. Setup Python
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
@@ -25,9 +24,11 @@ jobs:
       - name: Install Python dependencies
         run: pip install -r requirements.txt
 
-      - name: Generate AsciiDoc from Excel
+      # 3. Génération du .adoc à partir de l'Excel
+      - name: Generate AsciiDoc
         run: python generate_doc.py
 
+      # 4. Setup Ruby & Asciidoctor
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
@@ -36,23 +37,15 @@ jobs:
       - name: Install Asciidoctor
         run: gem install asciidoctor
 
+      # 5. Conversion en HTML (Utilisation du style par défaut "Book")
       - name: Build HTML
         run: asciidoctor output.adoc -o index.html
 
-      # --- NOUVELLE ÉTAPE : COMMIT DANS GIT ---
-      - name: Commit and Push HTML
-        run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add index.html
-          # On vérifie s'il y a des changements avant de commit pour éviter une erreur si rien n'a bougé
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Update documentation html [skip ci]" && git push)
-      # ----------------------------------------
-
-      # (Tu peux garder ou supprimer la partie "pages" ci-dessous selon ton choix)
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      # 6. Upload du fichier dans la Release
+      - name: Upload HTML to Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
         with:
-          path: . 
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4
+          files: index.html
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
