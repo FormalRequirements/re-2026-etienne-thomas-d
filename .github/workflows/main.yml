@@ -4,10 +4,9 @@ on:
   push:
     branches:
       - main
-    # 🎯 LE CHANGEMENT EST ICI :
     # Le workflow ne se lancera que si ce fichier précis est modifié dans le commit
-    paths:
-      - 'source/requirements_app_PEGS.xlsx'
+    # paths:
+    #   - 'source/requirements_app_PEGS.xlsx'
       
   # On garde le déclenchement manuel au cas où
   workflow_dispatch:
