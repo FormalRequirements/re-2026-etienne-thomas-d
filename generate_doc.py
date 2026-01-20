@@ -25,7 +25,7 @@ def generate_asciidoc():
 
     try:
         df = pd.read_excel(EXCEL_PATH)
-        # Gestion des majuscules pour la catégorie pour éviter les doublons (System vs system)
+        # Gestion des majuscules pour la catégorie
         if 'Category' in df.columns:
             df['Category'] = df['Category'].str.capitalize()
     except Exception as e:
@@ -73,17 +73,17 @@ Source des données : `{os.path.basename(EXCEL_PATH)}`
 
     for category in categories_to_process:
         items = df[df['Category'] == category]
-        # Tri par ID si la colonne existe
         if 'ID' in items.columns:
             items = items.sort_values(by='ID')
 
         adoc_content += f"\n== {category}\n\n"
         
         for _, row in items.iterrows():
-            # Récupération des données (On utilise .get() pour éviter les erreurs si une colonne manque)
             req_id = clean_text(row.get('ID', 'REQ-???'))
             title = clean_text(row.get('Title', 'Sans titre'))
-            pegs_ref = clean_text(row.get('PEGS Ref', '-'))
+            pegs_ref = clean_text(row.get('PEGS Ref', ''))
+            # Récupération de la colonne J (Priority)
+            priority = clean_text(row.get('Priority', '')) 
             desc = clean_text(row.get('Description', ''))
             rationale = clean_text(row.get('Rationale', ''))
             accept_crit = clean_text(row.get('Acceptance Criteria', ''))
@@ -94,19 +94,22 @@ Source des données : `{os.path.basename(EXCEL_PATH)}`
             adoc_content += f"=== {req_id}: {title}\n\n"
             
             # 2. Métadonnées (Ref PEGS)
-            # On l'affiche juste en dessous du titre
             if pegs_ref:
                 adoc_content += f"**Ref PEGS:** `{pegs_ref}`\n\n"
+
+            # 3. Priorité (Colonne J) -> Juste au-dessus de la description
+            if priority:
+                adoc_content += f"**Priorité:** `{priority}`\n\n"
             
-            # 3. Description (Gras + saut de ligne) -> Invisible dans la TOC
+            # 4. Description (Gras + saut de ligne) -> Invisible dans la TOC
             if desc:
                 adoc_content += f"**Description** +\n{desc}\n\n"
             
-            # 4. Justification (Bloc Note) -> Invisible dans la TOC
+            # 5. Justification (Bloc Note) -> Invisible dans la TOC
             if rationale:
                 adoc_content += f"[NOTE]\n.Justification\n====\n{rationale}\n====\n\n"
             
-            # 5. Critères (Gras + saut de ligne) -> Invisible dans la TOC
+            # 6. Critères (Gras + saut de ligne) -> Invisible dans la TOC
             if accept_crit:
                 adoc_content += f"**Critères d'acceptation** +\n{accept_crit}\n\n"
             
