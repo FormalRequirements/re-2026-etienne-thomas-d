@@ -104,7 +104,8 @@ Source des données : `{os.path.basename(EXCEL_PATH)}`
                 adoc_content += f"**Ref PEGS:** `{pegs_ref}`\n\n"
 
             if desc:
-                adoc_content += f"[NOTE]{desc}\n\n"
+                adoc_content += f"[NOTE]\n.Description\n====\n{desc}\n====\n\n"
+
             
             if priority:
                 adoc_content += f"**Priorité:** `{priority}`\n\n"
