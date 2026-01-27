@@ -110,7 +110,7 @@ Source des données : `{os.path.basename(EXCEL_PATH)}`
                 adoc_content += f"**Priorité:** `{priority}`\n\n"
             
             if rationale:
-                adoc_content += f"**Justification:** `{rationale}`\n\n"
+                adoc_content += f"**Justification:** +\n{rationale}\n\n"
             
             if accept_crit:
                 adoc_content += f"**Critères d'acceptation:** +\n{accept_crit}\n\n"
