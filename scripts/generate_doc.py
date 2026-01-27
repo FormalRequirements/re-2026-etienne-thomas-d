@@ -12,10 +12,10 @@ OUTPUT_ADOC = os.path.join(PROJECT_ROOT, "output.adoc")
 CATEGORY_ORDER = ["Goals", "Environment", "System", "Project"]
 
 PEGS_DEFINITIONS = {
-    "Goals": "Cette section définit la vision de LIFT-TRACK : fournir une application mobile-first simple et stable pour le suivi de la musculation, visualiser la progression des pratiquants et faciliter, à terme, l'interaction avec des coachs sportifs.",
-    "Environment": "Cette section décrit le contexte d'utilisation en salle de sport (usage sur smartphone, connectivité instable), les profils utilisateurs (pratiquants, coachs) et les contraintes liées à l'usage en conditions réelles d'entraînement.",
-    "System": "Cette section détaille les fonctionnalités (carnet d'entraînement, historique, programmes), leur découpage par versions (V1 Cœur, V2 Coaching, V3 Avancé) et les critères d'acceptation techniques.",
-    "Project": "Cette section couvre le cadre académique du projet, la méthodologie de documentation (Source unique Excel, génération CI/CD) et les contraintes de réalisation (équipe, livrables, jalons)."
+    "Goals": "Vision du projet : fournir une application mobile-first simple et stable pour le suivi de la musculation, permettant aux pratiquants de visualiser leur progression et, à terme (V2), d'interagir avec des coachs sportifs.",
+    "Environment": "Contexte d'utilisation : usage principal sur smartphone en salle de sport, prenant en compte des conditions de connectivité réseau potentiellement instables (mode hors ligne) et l'environnement physique de l'entraînement.",
+    "System": "Périmètre fonctionnel : couvre les fonctionnalités Cœur de la V1 (suivi de séance, historique), l'extension Coaching de la V2 et les fonctionnalités avancées de la V3 (nutrition, wearables).",
+    "Project": "Cadre du projet : travail académique utilisant la méthodologie PEGS. Les exigences sont centralisées dans une source unique (Excel) et la documentation est générée automatiquement via GitHub Actions."
 }
 
 def clean_text(text):
@@ -80,13 +80,15 @@ Source des données : `{os.path.basename(EXCEL_PATH)}`
         if 'ID' in items.columns:
             items = items.sort_values(by='ID')
 
+        # 1. Le titre est écrit ici (comme avant)
         adoc_content += f"\n== {category}\n\n"
         
+        # 2. AJOUT : On insère la définition JUSTE DESSOUS, sans toucher au titre
         if category in PEGS_DEFINITIONS:
-            # On ajoute un bloc de citation ou simplement du texte en italique
-            def_text = PEGS_DEFINITIONS[category]
-            adoc_content += f"{category}\n====\n{def_text}\n====\n\n"
+            # Le bloc [NOTE] crée un encadré bleu propre dans la page HTML
+            adoc_content += f"====\n{PEGS_DEFINITIONS[category]}\n====\n\n"
         
+        # 3. Ensuite on liste les exigences (comme avant)
         for _, row in items.iterrows():
             req_id = clean_text(row.get('ID', 'REQ-???'))
             title = clean_text(row.get('Title', 'Sans titre'))
