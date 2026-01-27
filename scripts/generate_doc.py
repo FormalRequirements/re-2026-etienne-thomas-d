@@ -103,17 +103,17 @@ Source des données : `{os.path.basename(EXCEL_PATH)}`
             if pegs_ref:
                 adoc_content += f"**Ref PEGS:** `{pegs_ref}`\n\n"
 
+            if desc:
+                adoc_content += f"[NOTE]{desc}\n\n"
+            
             if priority:
                 adoc_content += f"**Priorité:** `{priority}`\n\n"
             
-            if desc:
-                adoc_content += f"**Description** +\n{desc}\n\n"
-            
             if rationale:
-                adoc_content += f"[NOTE]\n.Justification\n====\n{rationale}\n====\n\n"
+                adoc_content += f"**Justification:** `{rationale}`\n\n"
             
             if accept_crit:
-                adoc_content += f"**Critères d'acceptation** +\n{accept_crit}\n\n"
+                adoc_content += f"**Critères d'acceptation:** +\n{accept_crit}\n\n"
             
             adoc_content += "---\n\n"
 
