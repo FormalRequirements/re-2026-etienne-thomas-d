@@ -39,6 +39,7 @@ def generate_asciidoc():
         sys.exit(1)
 
     today = datetime.date.today()
+    
     adoc_content = f"""= LIFT-TRACK Requirements Document
 :author: Thomas DOUMENG & Etienne CARPENTIER
 :revdate: {today}
@@ -47,7 +48,7 @@ def generate_asciidoc():
 :toc-title: Table of Contents
 :toclevels: 3
 :sectnums:
-:sectnumlevels: 2
+:sectnumlevels: 4
 :icons: font
 :experimental:
 :source-highlighter: highlight.js
@@ -94,8 +95,8 @@ Data source: `{os.path.basename(EXCEL_PATH)}`
             rationale = clean_text(row.get('Rationale', ''))
             accept_crit = clean_text(row.get('Acceptance Criteria', ''))
 
-            adoc_content += f"=== {req_id}: {title}\n\n"
-            
+            adoc_content += f"[unnumbered]\n=== {req_id}: {title}\n\n" 
+
             if pegs_ref:
                 adoc_content += f"**PEGS Ref:** `{pegs_ref}`\n\n"
 
