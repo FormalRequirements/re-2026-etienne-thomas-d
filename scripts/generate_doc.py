@@ -12,10 +12,10 @@ OUTPUT_ADOC = os.path.join(PROJECT_ROOT, "output.adoc")
 CATEGORY_ORDER = ["Goals", "Environment", "System", "Project"]
 
 PEGS_DEFINITIONS = {
-    "Goals": "Vision du projet : fournir une application mobile-first simple et stable pour le suivi de la musculation, permettant aux pratiquants de visualiser leur progression et, à terme (V2), d'interagir avec des coachs sportifs.",
-    "Environment": "Contexte d'utilisation : usage principal sur smartphone en salle de sport, prenant en compte des conditions de connectivité réseau potentiellement instables (mode hors ligne) et l'environnement physique de l'entraînement.",
-    "System": "Périmètre fonctionnel : couvre les fonctionnalités Cœur de la V1 (suivi de séance, historique), l'extension Coaching de la V2 et les fonctionnalités avancées de la V3 (nutrition, wearables).",
-    "Project": "Cadre du projet : travail académique utilisant la méthodologie PEGS. Les exigences sont centralisées dans une source unique (Excel) et la documentation est générée automatiquement via GitHub Actions."
+    "Goals": "Project vision: provide a simple and stable mobile-first application for tracking weight training, allowing users to visualize their progress and, in the future (V2), interact with sports coaches.",
+    "Environment": "Usage context: mainly used on smartphones in gyms, taking into account potentially unstable network connectivity (offline mode) and the physical environment of training.",
+    "System": "Functional scope: covers the Core features of V1 (session tracking, history), the Coaching extension of V2, and the advanced features of V3 (nutrition, wearables).",
+    "Project": "Project framework: academic work using the PEGS methodology. Requirements are centralized in a single source (Excel) and documentation is generated automatically via GitHub Actions."
 }
 
 def clean_text(text):
@@ -24,10 +24,10 @@ def clean_text(text):
     return str(text).strip().replace("\n", " +\n")
 
 def generate_asciidoc():
-    print(f"Recherche du fichier : {EXCEL_PATH}")
+    print(f"Looking for file: {EXCEL_PATH}")
     
     if not os.path.exists(EXCEL_PATH):
-        print(f"Erreur : Fichier introuvable à {EXCEL_PATH}")
+        print(f"Error: File not found at {EXCEL_PATH}")
         sys.exit(1)
 
     try:
@@ -35,7 +35,7 @@ def generate_asciidoc():
         if 'Category' in df.columns:
             df['Category'] = df['Category'].str.capitalize()
     except Exception as e:
-        print(f"Erreur lecture Excel : {e}")
+        print(f"Excel read error: {e}")
         sys.exit(1)
 
     today = datetime.date.today()
@@ -44,7 +44,7 @@ def generate_asciidoc():
 :revdate: {today}
 :doctype: book
 :toc: macro
-:toc-title: Table des matières
+:toc-title: Table of Contents
 :toclevels: 3
 :sectnums:
 :sectnumlevels: 4
@@ -57,12 +57,12 @@ toc::[]
 
 == Introduction
 
-Ce document contient les spécifications du projet LIFT-TRACK générées automatiquement.
+This document contains the specifications of the LIFT-TRACK project generated automatically.
 
 [TIP]
 ====
-Dernière mise à jour : {today}.\n
-Source des données : `{os.path.basename(EXCEL_PATH)}`
+Last update: {today}.\n
+Data source: `{os.path.basename(EXCEL_PATH)}`
 ====
 """
 
@@ -87,7 +87,7 @@ Source des données : `{os.path.basename(EXCEL_PATH)}`
         
         for _, row in items.iterrows():
             req_id = clean_text(row.get('ID', 'REQ-???'))
-            title = clean_text(row.get('Title', 'Sans titre'))
+            title = clean_text(row.get('Title', 'Untitled'))
             pegs_ref = clean_text(row.get('PEGS Ref', ''))
             priority = clean_text(row.get('Priority', '')) 
             desc = clean_text(row.get('Description', ''))
@@ -97,27 +97,27 @@ Source des données : `{os.path.basename(EXCEL_PATH)}`
             adoc_content += f"=== {req_id}: {title}\n\n"
             
             if pegs_ref:
-                adoc_content += f"**Ref PEGS:** `{pegs_ref}`\n\n"
+                adoc_content += f"**PEGS Ref:** `{pegs_ref}`\n\n"
 
             if desc:
                 adoc_content += f"[NOTE]\n.Description\n====\n{desc}\n====\n\n"
 
             
             if priority:
-                adoc_content += f"**Priorité:** `{priority}`\n\n"
+                adoc_content += f"**Priority:** `{priority}`\n\n"
             
             if rationale:
-                adoc_content += f"**Justification:** +\n{rationale}\n\n"
+                adoc_content += f"**Rationale:** +\n{rationale}\n\n"
             
             if accept_crit:
-                adoc_content += f"**Critères d'acceptation:** +\n{accept_crit}\n\n"
+                adoc_content += f"**Acceptance Criteria:** +\n{accept_crit}\n\n"
             
             adoc_content += "---\n\n"
 
     with open(OUTPUT_ADOC, "w", encoding="utf-8") as f:
         f.write(adoc_content)
     
-    print(f"Succès : {OUTPUT_ADOC} généré.")
+    print(f"Success: {OUTPUT_ADOC} generated.")
 
 if __name__ == "__main__":
     generate_asciidoc()
