@@ -47,7 +47,7 @@ def generate_asciidoc():
 :toc-title: Table of Contents
 :toclevels: 3
 :sectnums:
-:sectnumlevels: 4
+:sectnumlevels: 2
 :icons: font
 :experimental:
 :source-highlighter: highlight.js
