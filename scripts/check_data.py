@@ -30,11 +30,27 @@ def check_excel_structure():
         if df.empty:
             print("ATTENTION : Le fichier Excel est vide.")
         
+        if df['ID'].duplicated().any():
+            duplicates = df[df['ID'].duplicated()]['ID'].unique().tolist()
+            print(f"ERREUR DE DONNÉES : IDs dupliqués détectés : {duplicates}")
+            sys.exit(1)
+        else:
+            print("Unicité des IDs : VALIDE")
+
+        mask_missing = df['Description'].isna() | (df['Description'].astype(str).str.strip() == "")
+        
+        if mask_missing.any():
+            bad_ids = df.loc[mask_missing, 'ID'].tolist()
+            print(f"ERREUR DE DONNÉES : Description manquante pour les IDs suivants : {bad_ids}")
+            sys.exit(1)
+        else:
+            print("Contenu des descriptions : VALIDE")
+
     except Exception as e:
         print(f"ERREUR CRITIQUE lors de la lecture : {e}")
         sys.exit(1)
 
-    print("TEST RÉUSSI.")
+    print("TOUS LES TESTS SONT RÉUSSIS.")
     sys.exit(0)
     
 
