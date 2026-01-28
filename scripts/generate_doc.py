@@ -80,15 +80,11 @@ Source des données : `{os.path.basename(EXCEL_PATH)}`
         if 'ID' in items.columns:
             items = items.sort_values(by='ID')
 
-        # 1. Le titre est écrit ici (comme avant)
         adoc_content += f"\n== {category}\n\n"
         
-        # 2. AJOUT : On insère la définition JUSTE DESSOUS, sans toucher au titre
         if category in PEGS_DEFINITIONS:
-            # Le bloc [NOTE] crée un encadré bleu propre dans la page HTML
             adoc_content += f"{PEGS_DEFINITIONS[category]}\n\n"
         
-        # 3. Ensuite on liste les exigences (comme avant)
         for _, row in items.iterrows():
             req_id = clean_text(row.get('ID', 'REQ-???'))
             title = clean_text(row.get('Title', 'Sans titre'))
